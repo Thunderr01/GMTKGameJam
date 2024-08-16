@@ -1,0 +1,24 @@
+on:
+  release:
+    types: [published]
+
+jobs:
+  release_html:
+    runs-on: ubuntu-latest
+    steps:
+      - name: download HTML5
+        id: download-html
+        uses: dsaltares/fetch-gh-release-asset@master
+        with:
+          version: "latest"
+          file: Web.zip
+          token: "${{ secrets.GH_CREDENTIALS }}"
+      - name: deploy to itch.io (HTML5)
+        uses: josephbmanley/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+          CHANNEL: html
+          ITCH_GAME: gmtkgamejam-teammaple
+          ITCH_USER: AmitZ
+          PACKAGE: Web.zip
+          VERSION: ${{ steps.download-html.outputs.version }}
