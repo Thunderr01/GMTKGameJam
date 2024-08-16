@@ -1,0 +1,44 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  export_game:
+    # Always use ubuntu-latest for this action
+    runs-on: ubuntu-latest
+    # Job name, can be anything
+    name: Export game to Github
+    steps:
+      # Always include the checkout step so that
+      # your project is available for Godot to export
+      - name: checkout
+        uses: actions/checkout@v2.3.1
+        # Ensure that you get the entire project history
+        with:
+          fetch-depth: 0
+      - name: export game
+        id: export
+        # Use latest version (see releases for all versions)
+        uses: firebelley/godot-export@v5.2.1
+        with:
+          # Defining all the required inputs
+          godot_executable_download_url: https://downloads.tuxfamily.org/godotengine/4.3/Godot_v4.3-stable_linux.x86_64.zip
+          godot_export_templates_download_url: https://downloads.tuxfamily.org/godotengine/4.3/Godot_v4.3-stable_export_templates.tpz
+          cache: true
+          # set this either to . or your game path, e.g. ./godot in case
+          # your game is within a sub-directory
+          relative_project_path: ./
+          archive_output: true
+      - name: get version
+        id: version
+        uses: reecetech/version-increment@2024.4.3
+        with:
+          scheme: calver
+      - name: create release
+        uses: ncipollo/release-action@v1.14.0
+        with:
+          token: ${{ secrets.GH_CREDENTIALS }}
+          generateReleaseNotes: true
+          tag: ${{ steps.version.outputs.v-version }}
+          artifacts: ${{ steps.export.outputs.archive_directory }}/*
