@@ -65,3 +65,8 @@ DropCable={
 2d_physics/layer_2="server"
 2d_physics/layer_3="connection"
 2d_physics/layer_4="nexus"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
