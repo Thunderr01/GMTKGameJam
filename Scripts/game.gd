@@ -2,12 +2,20 @@ extends Node2D
 
 @onready var servers = $Servers
 @onready var timer = $Timer
+<<<<<<< HEAD
 var available_colors = [Color.RED, Color.PURPLE, Color.ORANGE, Color.DEEP_PINK]
 var used_colors = []
 var rng = RandomNumberGenerator.new()
 var time
 var time_of_last_blinking = 0.0
 var time_per_blink = 2.0
+=======
+var used_colors = []
+var rng = RandomNumberGenerator.new()
+var time
+var time_since_last_blinking = 0.0
+var time_per_blink = 10.0
+>>>>>>> 2ffcf51 (created server class, started work on server choosing algorithm)
 
 func _ready() -> void:
 	timer.wait_time = 9999
@@ -15,6 +23,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	time = timer.wait_time - timer.time_left
+<<<<<<< HEAD
 	if time - time_of_last_blinking >= time_per_blink:
 		blink_two_servers()
 		time_of_last_blinking += 10.0		
@@ -25,6 +34,11 @@ func blink_two_servers():
 	if unblinking_servers.size() < 2:
 		return
 		
+=======
+	
+func link_two_servers():
+	var unblinking_servers = get_all_unblinking_servers()
+>>>>>>> 2ffcf51 (created server class, started work on server choosing algorithm)
 	var random_servers = get_two_random_servers(unblinking_servers)
 	var server1: Server = random_servers[0]
 	var server2: Server = random_servers[1]
@@ -32,6 +46,7 @@ func blink_two_servers():
 	server1.set_connected_server(server2)
 	server2.set_connected_server(server1)
 	
+<<<<<<< HEAD
 	var server1_color =  get_random_unused_color()
 	server1.set_blinking_color(server1_color)
 	used_colors.append(server1_color)
@@ -39,6 +54,8 @@ func blink_two_servers():
 	server2.set_blinking_color(server1_color)
 	used_colors.append(server2_color)
 	
+=======
+>>>>>>> 2ffcf51 (created server class, started work on server choosing algorithm)
 	server1.set_is_blinking(true)
 	server2.set_is_blinking(true)
 
@@ -56,6 +73,7 @@ func get_two_random_servers(servers: Array):
 	var server2_index = 0
 	
 	while server1_index == server2_index:
+<<<<<<< HEAD
 		server1_index = rng.randi_range(0, servers.size() - 1)
 		server2_index = rng.randi_range(0, servers.size() - 1)	
 		
@@ -69,3 +87,9 @@ func get_random_unused_color():
 		chosen_color = available_colors[rng.randi_range(0, available_colors.size() - 1)]
 		
 	return chosen_color
+=======
+		server1_index = rng.randi_range(0, servers.size())
+		server1_index = rng.randi_range(0, servers.size())	
+		
+	return [servers[server1_index], servers[server2_index]]
+>>>>>>> 2ffcf51 (created server class, started work on server choosing algorithm)
