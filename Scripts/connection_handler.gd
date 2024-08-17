@@ -38,12 +38,33 @@ func _process(delta: float) -> void:
 	if _connection_point_start and Input.is_action_just_pressed("DropCable"):
 		handle(_connection_point_start)
 	
+func _physics_process(delta: float) -> void:
+	highlight_closest_connection()
 	
-func _on_area_detect_connection_body_entered(body: Node2D) -> void:
-	_current_connection_point = body
-	body.blink(Color.RED)
+	
+func highlight_closest_connection():
+	# search for the closet body which are in the area
+	var bodies = $AreaDetectConnection.get_overlapping_bodies()
+	if bodies.size() < 1:
+		return
+	var closet_body = bodies[0]
+	var closet_body_distance = closet_body.global_position.distance_to(global_position)
+	for body in bodies:
+		if body == closet_body:
+			continue
+		var body_distance = body.global_position.distance_to(global_position)
+		if body_distance < closet_body_distance:
+			closet_body_distance = body_distance
+			closet_body = body
+	if _current_connection_point == null:
+		_current_connection_point = closet_body
+		closet_body.blink(Color.RED)
+	if closet_body != _current_connection_point:
+		_current_connection_point.unblink()
+		closet_body.blink(Color.RED)
+		_current_connection_point = closet_body
 
 func _on_area_detect_connection_body_exited(body: Node2D) -> void:
 	if _current_connection_point == body:
+		_current_connection_point.unblink()
 		_current_connection_point = null
-		body.unblink()
