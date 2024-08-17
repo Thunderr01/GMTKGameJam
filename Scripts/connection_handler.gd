@@ -1,12 +1,7 @@
 extends Node2D
 class_name ConnectionHandler
 
-var _rope: Rope
-var _rope_handle: RopeHandle
-var _temp_handler: RopeHandle
-
 var _current_connection_point: ConnectionPoint
-
 var _connection_point_start: ConnectionPoint
 
 func handle(connection: ConnectionPoint):

@@ -68,7 +68,7 @@ DropCable={
 2d_physics/layer_1="player"
 2d_physics/layer_2="server"
 2d_physics/layer_3="connection"
-2d_physics/layer_4="nexus"
+2d_physics/layer_4="cable"
 
 [rendering]
 
