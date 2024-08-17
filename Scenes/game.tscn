@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dfck1k7lvcccf" path="res://Scenes/main_server.tscn" id="4_ab2jp"]
 
 [node name="game" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_god2k")
 
 [node name="CharacterBody2D" parent="." node_paths=PackedStringArray("cables_handler") instance=ExtResource("1_7kpdi")]
