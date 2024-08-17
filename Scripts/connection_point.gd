@@ -91,7 +91,9 @@ func set_as_hanging():
 	if connection_state == ConnectionState.CONNECTED_END:
 		_remove_rope_handle()
 		_add_rope()
+		
 	connection_state = ConnectionState.HANGING
+	$Disconnect.play()
 	
 func set_end_connection(end: ConnectionPoint):
 	_other_connection_point = end
