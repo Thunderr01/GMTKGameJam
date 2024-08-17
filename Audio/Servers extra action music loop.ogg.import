@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://5gggsjnfvtup"
+path="res://.godot/imported/Servers extra action music loop.ogg-52287dc2fcbbc4fe8e8024152bdf616f.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Servers extra action music loop.ogg"
+dest_files=["res://.godot/imported/Servers extra action music loop.ogg-52287dc2fcbbc4fe8e8024152bdf616f.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

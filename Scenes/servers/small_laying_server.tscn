@@ -1,25 +1,27 @@
 [gd_scene load_steps=5 format=3 uid="uid://xds7xy86xm8a"]
 
 [ext_resource type="Script" path="res://Scripts/server.gd" id="1_e1pb1"]
-[ext_resource type="Texture2D" uid="uid://bwbpm40qx8k35" path="res://Art/big_server.png" id="1_orxg3"]
+[ext_resource type="Texture2D" uid="uid://c4v5c685oopc7" path="res://Art/laying_small_server.png" id="2_amkvn"]
 [ext_resource type="PackedScene" uid="uid://cmsmwaoc1hl42" path="res://Scenes/connection_point.tscn" id="2_nd4tx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_murm5"]
-size = Vector2(195, 115)
+size = Vector2(113, 43.5)
 
-[node name="Server" type="StaticBody2D"]
+[node name="SmallLayingServer" type="StaticBody2D"]
 collision_layer = 2
 script = ExtResource("1_e1pb1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(3.55271e-15, -10)
 scale = Vector2(7, 7)
-texture = ExtResource("1_orxg3")
+texture = ExtResource("2_amkvn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 2.5)
+position = Vector2(0.5, -7.75)
 shape = SubResource("RectangleShape2D_murm5")
 
 [node name="ConnectionPoint" parent="." instance=ExtResource("2_nd4tx")]
-position = Vector2(-63, -19)
-rotation = 1.5708
+position = Vector2(-30, -2)
+
+[node name="ConnectionPoint2" parent="." instance=ExtResource("2_nd4tx")]
+position = Vector2(20, -2)
