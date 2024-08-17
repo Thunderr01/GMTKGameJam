@@ -5,19 +5,21 @@
 [ext_resource type="Script" path="res://addons/ropesim/RopeHandle.gd" id="3_c20bl"]
 [ext_resource type="PackedScene" uid="uid://blbo54lvd7gbn" path="res://Scenes/connection_handler.tscn" id="4_oj2c8"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_spsc3"]
-size = Vector2(128, 127)
+[sub_resource type="CircleShape2D" id="CircleShape2D_6iuv4"]
+radius = 64.158
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
 collision_mask = 6
 script = ExtResource("1_p10un")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -28)
+scale = Vector2(1, 1.4375)
 texture = ExtResource("2_li4xk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0.5)
-shape = SubResource("RectangleShape2D_spsc3")
+shape = SubResource("CircleShape2D_6iuv4")
 
 [node name="RopeHandle" type="Marker2D" parent="."]
 script = ExtResource("3_c20bl")

@@ -43,6 +43,7 @@ func _add_rope():
 	if _rope:
 		return
 	_rope = Rope.new()
+	_rope.z_index = 10
 	add_child(_rope)
 
 ## Removes rope from the scene
