@@ -18,25 +18,10 @@ cables_handler = NodePath("../RopeHandler")
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="CharacterBody2D"]
 remote_path = NodePath("../../Camera2D")
 
-[node name="Server" parent="." instance=ExtResource("2_clrdj")]
-position = Vector2(426, 152)
-
-[node name="Server2" parent="." instance=ExtResource("2_clrdj")]
-position = Vector2(204, 461)
-scale = Vector2(-1, 1)
-
 [node name="RopeHandler" type="Node2D" parent="."]
 
 [node name="ConnectionHandler" type="Node2D" parent="."]
 script = ExtResource("3_fjnst")
-
-[node name="Server4" parent="." instance=ExtResource("2_clrdj")]
-position = Vector2(648, 376)
-rotation = -6.28319
-
-[node name="Server3" parent="." instance=ExtResource("2_clrdj")]
-position = Vector2(92, 219)
-scale = Vector2(-1, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(373, 264)
@@ -52,3 +37,23 @@ scale = Vector2(5, 5)
 texture = ExtResource("5_cta8k")
 stretch_mode = 1
 metadata/_edit_lock_ = true
+
+[node name="Servers" type="Node" parent="."]
+
+[node name="Server" parent="Servers" instance=ExtResource("2_clrdj")]
+position = Vector2(426, 152)
+
+[node name="Server2" parent="Servers" instance=ExtResource("2_clrdj")]
+position = Vector2(204, 461)
+rotation = -3.14159
+scale = Vector2(1, -1)
+
+[node name="Server4" parent="Servers" instance=ExtResource("2_clrdj")]
+position = Vector2(648, 376)
+
+[node name="Server3" parent="Servers" instance=ExtResource("2_clrdj")]
+position = Vector2(92, 219)
+rotation = -3.14159
+scale = Vector2(1, -1)
+
+[node name="Timer" type="Timer" parent="."]
