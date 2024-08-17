@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b763ryg5heur6"
+path="res://.godot/imported/Servers AMB loop.ogg-0e0fc2901bddcc20f439534d57b0b4e4.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Servers AMB loop.ogg"
+dest_files=["res://.godot/imported/Servers AMB loop.ogg-0e0fc2901bddcc20f439534d57b0b4e4.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
