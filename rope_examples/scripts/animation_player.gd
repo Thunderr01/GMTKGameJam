@@ -3,4 +3,4 @@ extends AnimationPlayer
 
 
 func _ready() -> void:
-    play("moving")
+	play("moving")

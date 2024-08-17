@@ -1,3 +1,41 @@
-[gd_scene format=3 uid="uid://b0de4obvvjc5w"]
+[gd_scene load_steps=5 format=3 uid="uid://dv8jaa2k3xtbu"]
 
-[node name="Game" type="Node2D"]
+[ext_resource type="PackedScene" uid="uid://d3culkoy37cgp" path="res://Scenes/player.tscn" id="1_7kpdi"]
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_god2k"]
+[ext_resource type="PackedScene" uid="uid://xds7xy86xm8a" path="res://Scenes/server.tscn" id="2_clrdj"]
+[ext_resource type="Script" path="res://Scripts/connection_handler.gd" id="3_fjnst"]
+
+[node name="game" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_god2k")
+
+[node name="CharacterBody2D" parent="." node_paths=PackedStringArray("cables_handler") instance=ExtResource("1_7kpdi")]
+position = Vector2(373, 264)
+scale = Vector2(0.365, 0.365)
+cables_handler = NodePath("../RopeHandler")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="CharacterBody2D"]
+remote_path = NodePath("../../Camera2D")
+
+[node name="Server" parent="." instance=ExtResource("2_clrdj")]
+position = Vector2(426, 152)
+
+[node name="Server2" parent="." instance=ExtResource("2_clrdj")]
+position = Vector2(166, 367)
+scale = Vector2(-1, 1)
+
+[node name="RopeHandler" type="Node2D" parent="."]
+
+[node name="ConnectionHandler" type="Node2D" parent="."]
+script = ExtResource("3_fjnst")
+
+[node name="Server4" parent="." instance=ExtResource("2_clrdj")]
+position = Vector2(386, 401)
+
+[node name="Server3" parent="." instance=ExtResource("2_clrdj")]
+position = Vector2(202, 212)
+scale = Vector2(-1, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(373, 264)
+scale = Vector2(0.365, 0.365)
