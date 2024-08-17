@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dv8jaa2k3xtbu"]
+[gd_scene load_steps=5 format=3 uid="uid://dv8jaa2k3xtbu"]
 
 [ext_resource type="PackedScene" uid="uid://d3culkoy37cgp" path="res://Scenes/player.tscn" id="1_7kpdi"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_god2k"]
 [ext_resource type="PackedScene" uid="uid://xds7xy86xm8a" path="res://Scenes/server.tscn" id="2_clrdj"]
 [ext_resource type="Script" path="res://Scripts/connection_handler.gd" id="3_fjnst"]
-[ext_resource type="PackedScene" uid="uid://dfck1k7lvcccf" path="res://Scenes/main_server.tscn" id="4_ab2jp"]
 
 [node name="game" type="Node2D"]
 y_sort_enabled = true
@@ -40,6 +39,3 @@ scale = Vector2(-1, 1)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(373, 264)
 scale = Vector2(0.365, 0.365)
-
-[node name="Nexus" parent="." instance=ExtResource("4_ab2jp")]
-position = Vector2(730, 310)
