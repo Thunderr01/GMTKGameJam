@@ -16,6 +16,8 @@ var _rope: Rope
 var _rope_handle: RopeHandle
 var _other_connection_point: ConnectionPoint
 
+var UNBLINKING_COLOR: Color = Color.hex(0x00ff00ff)
+
 """
 @brief: This function handle the interaction with the connection point, it will change its state and
 		returns the new state
@@ -82,11 +84,11 @@ func _ready() -> void:
 	_rope_handle.strength = 1.0
 
 
-func detect():
-	$Sprite2D.modulate = Color.hex(0xff0000ff)
+func blink(color: Color):
+	$Sprite2D.modulate = color
 	
-func undetect():
-	$Sprite2D.modulate = Color.hex(0x00ff00ff)
+func unblink():
+	$Sprite2D.modulate = UNBLINKING_COLOR
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
