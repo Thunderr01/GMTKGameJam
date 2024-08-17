@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b0de4obvvjc5w"]
+[gd_scene load_steps=10 format=3 uid="uid://b0de4obvvjc5w"]
 
 [ext_resource type="PackedScene" uid="uid://d3culkoy37cgp" path="res://Scenes/player.tscn" id="1_7kpdi"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_god2k"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://dlh0lhjwgay2g" path="res://Audio/Servers base music loop.ogg" id="6_bxts1"]
 [ext_resource type="AudioStream" uid="uid://5gggsjnfvtup" path="res://Audio/Servers extra action music loop.ogg" id="7_ltx5y"]
 [ext_resource type="PackedScene" uid="uid://8cky22ghs3dr" path="res://Scenes/servers/small_standing_server.tscn" id="7_oqfnm"]
+[ext_resource type="AudioStream" uid="uid://b763ryg5heur6" path="res://Audio/Servers AMB loop.ogg" id="9_7og3o"]
 
 [node name="game" type="Node2D"]
 y_sort_enabled = true
@@ -75,3 +76,6 @@ stream = ExtResource("6_bxts1")
 
 [node name="ThemeEpic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_ltx5y")
+
+[node name="ServersAMB" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_7og3o")
