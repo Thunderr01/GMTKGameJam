@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://8cky22ghs3dr"]
+
+[ext_resource type="Script" path="res://Scripts/server.gd" id="1_k35di"]
+[ext_resource type="Texture2D" uid="uid://dptbtxbnw5ic2" path="res://Art/standing_small_server.png" id="2_pyx86"]
+[ext_resource type="PackedScene" uid="uid://cmsmwaoc1hl42" path="res://Scenes/connection_point.tscn" id="3_o57xg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_murm5"]
+size = Vector2(61, 89)
+
+[node name="Server" type="StaticBody2D"]
+collision_layer = 2
+script = ExtResource("1_k35di")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(10.5, -10)
+scale = Vector2(7, 7)
+texture = ExtResource("2_pyx86")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -9.5)
+shape = SubResource("RectangleShape2D_murm5")
+
+[node name="ConnectionPoint" parent="." instance=ExtResource("3_o57xg")]
+position = Vector2(0, -30)
+
+[node name="ConnectionPoint2" parent="." instance=ExtResource("3_o57xg")]
+position = Vector2(0, 22)
