@@ -12,6 +12,9 @@ var time_per_blink = 2.0
 func _ready():
 	timer.wait_time = 9999
 	timer.start()
+	$ThemeBase.play()
+	$ThemeEpic.play()
+	$ThemeEpic.volume_db = -100
 
 func _process(delta: float) -> void:
 	time = timer.wait_time - timer.time_left
