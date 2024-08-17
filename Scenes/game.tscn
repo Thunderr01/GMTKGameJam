@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://b0de4obvvjc5w"]
+[gd_scene load_steps=8 format=3 uid="uid://b0de4obvvjc5w"]
 
 [ext_resource type="PackedScene" uid="uid://d3culkoy37cgp" path="res://Scenes/player.tscn" id="1_7kpdi"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_god2k"]
 [ext_resource type="PackedScene" uid="uid://xds7xy86xm8a" path="res://Scenes/server.tscn" id="2_clrdj"]
 [ext_resource type="Script" path="res://Scripts/connection_handler.gd" id="3_fjnst"]
 [ext_resource type="Texture2D" uid="uid://ws1qrvnrinks" path="res://Art/floor_tile.png" id="5_cta8k"]
+[ext_resource type="AudioStream" uid="uid://dlh0lhjwgay2g" path="res://Audio/Servers base music loop.ogg" id="6_bxts1"]
+[ext_resource type="AudioStream" uid="uid://5gggsjnfvtup" path="res://Audio/Servers extra action music loop.ogg" id="7_ltx5y"]
 
 [node name="game" type="Node2D"]
 y_sort_enabled = true
@@ -57,3 +59,9 @@ rotation = -3.14159
 scale = Vector2(1, -1)
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="ThemeBase" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_bxts1")
+
+[node name="ThemeEpic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_ltx5y")
