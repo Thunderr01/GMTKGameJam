@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dfck1k7lvcccf"]
+[gd_scene load_steps=4 format=3 uid="uid://bm0jtmc8qyqxh"]
 
 [ext_resource type="Script" path="res://Scripts/nexus.gd" id="1_vxfk4"]
 [ext_resource type="Texture2D" uid="uid://biasqhe2deu41" path="res://icon.svg" id="2_ygsw5"]
