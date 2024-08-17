@@ -41,9 +41,9 @@ func _process(delta: float) -> void:
 	
 func _on_area_detect_connection_body_entered(body: Node2D) -> void:
 	_current_connection_point = body
-	body.detect()
+	body.blink(Color.RED)
 
 func _on_area_detect_connection_body_exited(body: Node2D) -> void:
 	if _current_connection_point == body:
 		_current_connection_point = null
-		body.undetect()
+		body.unblink()

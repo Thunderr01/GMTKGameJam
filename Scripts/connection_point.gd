@@ -121,10 +121,10 @@ func set_as_broken():
 func _ready() -> void:
 	pass # Replace with function body.
 
-func detect():
-	$Sprite2D.modulate = Color.hex(0xff0000ff)
+func blink(color: Color):
+	$Sprite2D.modulate = color
 	
-func undetect():
+func unblink():
 	$Sprite2D.modulate = Color.hex(0x00ff00ff)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
