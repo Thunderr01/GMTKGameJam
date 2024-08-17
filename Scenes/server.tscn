@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cmsmwaoc1hl42" path="res://Scenes/connection_point.tscn" id="2_nd4tx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_murm5"]
-size = Vector2(195, 115)
+size = Vector2(195, 89)
 
 [node name="Server" type="StaticBody2D"]
 collision_layer = 2
@@ -17,7 +17,7 @@ scale = Vector2(7, 7)
 texture = ExtResource("1_orxg3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 2.5)
+position = Vector2(0.5, 15.5)
 shape = SubResource("RectangleShape2D_murm5")
 
 [node name="ConnectionPoint" parent="." instance=ExtResource("2_nd4tx")]

@@ -38,7 +38,8 @@ texture = ExtResource("5_cta8k")
 stretch_mode = 1
 metadata/_edit_lock_ = true
 
-[node name="Servers" type="Node" parent="."]
+[node name="Servers" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="Server" parent="Servers" instance=ExtResource("2_clrdj")]
 position = Vector2(426, 152)
