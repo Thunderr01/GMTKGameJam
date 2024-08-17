@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://d3culkoy37cgp"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_p10un"]
+[ext_resource type="Texture2D" uid="uid://dtd7oxm0cvdbl" path="res://Art/main_girl.png" id="2_dnxyh"]
+[ext_resource type="Script" path="res://addons/ropesim/RopeHandle.gd" id="3_c20bl"]
+[ext_resource type="PackedScene" uid="uid://blbo54lvd7gbn" path="res://Scenes/connection_handler.tscn" id="4_oj2c8"]
+[ext_resource type="Script" path="res://Scripts/rope_breaker.gd" id="5_fjssu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6iuv4"]
+radius = 64.158
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yxrum"]
+radius = 76.0
+height = 206.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
+collision_mask = 14
+script = ExtResource("1_p10un")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -39)
+scale = Vector2(13, 13)
+texture = ExtResource("2_dnxyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0.5)
+shape = SubResource("CircleShape2D_6iuv4")
+
+[node name="RopeHandle" type="Marker2D" parent="."]
+script = ExtResource("3_c20bl")
+strength = 1.0
+
+[node name="ConnectionHandler" parent="." instance=ExtResource("4_oj2c8")]
+
+[node name="RopeBreaker" type="Area2D" parent="."]
+collision_mask = 8
+script = ExtResource("5_fjssu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RopeBreaker"]
+position = Vector2(-5, -29)
+shape = SubResource("CapsuleShape2D_yxrum")
+
+[connection signal="body_entered" from="RopeBreaker" to="RopeBreaker" method="_on_body_entered"]
+[connection signal="body_exited" from="RopeBreaker" to="RopeBreaker" method="_on_body_exited"]

@@ -20,15 +20,15 @@ func check_point_connection():
 
 func check_cable_collision():
 	for i in get_slide_collision_count():
-		var col = get_slide_collision(i).get_collider()
-		if col.collision_layer == 8:
-			col.break_rope()
+		var collision = get_slide_collision(i)
+		if collision.get_collider().collision_layer == 8:
+			$RopeBreaker.set_collision_point(collision.get_position())
 
 func _physics_process(delta):
 	get_input()
 	move_and_slide()
 	check_point_connection()
-	#check_cable_collision()
+	check_cable_collision()
 	handle_animation()
 
 func handle_animation():

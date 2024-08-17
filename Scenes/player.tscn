@@ -130,9 +130,8 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_6iuv4"]
 radius = 64.158
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yxrum"]
-radius = 76.0
-height = 206.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_rm3wq"]
+radius = 68.884
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
 collision_mask = 14
@@ -146,8 +145,6 @@ animation = &"standing"
 frame_progress = 0.641899
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(-1, 0.5)
 shape = SubResource("CircleShape2D_6iuv4")
 
 [node name="RopeHandle" type="Marker2D" parent="."]
@@ -164,9 +161,7 @@ collision_mask = 8
 script = ExtResource("5_fjssu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RopeBreaker"]
-visible = false
-position = Vector2(-5, -29)
-shape = SubResource("CapsuleShape2D_yxrum")
+shape = SubResource("CircleShape2D_rm3wq")
 
 [connection signal="body_entered" from="RopeBreaker" to="RopeBreaker" method="_on_body_entered"]
 [connection signal="body_exited" from="RopeBreaker" to="RopeBreaker" method="_on_body_exited"]
