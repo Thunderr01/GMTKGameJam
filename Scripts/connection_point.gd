@@ -98,6 +98,7 @@ func set_as_hanging():
 func set_end_connection(end: ConnectionPoint):
 	_other_connection_point = end
 	connection_state = ConnectionState.CONNECTED_START
+	$Connect.play()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

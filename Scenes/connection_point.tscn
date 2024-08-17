@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmsmwaoc1hl42"]
+[gd_scene load_steps=8 format=3 uid="uid://cmsmwaoc1hl42"]
 
 [ext_resource type="Script" path="res://Scripts/connection_point.gd" id="1_8mdiv"]
 [ext_resource type="Texture2D" uid="uid://biasqhe2deu41" path="res://icon.svg" id="1_44wws"]
 [ext_resource type="AudioStream" uid="uid://c7qkpxwfup052" path="res://Audio/Disconnect.wav" id="3_eevo3"]
+[ext_resource type="AudioStream" uid="uid://dryy11bemu451" path="res://Audio/Connect.wav" id="4_oijxr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vwmih"]
 
@@ -11,6 +12,12 @@ random_pitch = 1.5
 random_volume_offset_db = 1.0
 streams_count = 1
 stream_0/stream = ExtResource("3_eevo3")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ivw6p"]
+random_pitch = 1.5
+random_volume_offset_db = 1.0
+streams_count = 1
+stream_0/stream = ExtResource("4_oijxr")
 
 [node name="ConnectionPoint" type="StaticBody2D"]
 collision_layer = 4
@@ -27,3 +34,6 @@ shape = SubResource("RectangleShape2D_vwmih")
 
 [node name="Disconnect" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_1c2a7")
+
+[node name="Connect" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_ivw6p")
