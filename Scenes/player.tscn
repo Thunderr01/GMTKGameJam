@@ -133,7 +133,7 @@ radius = 64.158
 [sub_resource type="CircleShape2D" id="CircleShape2D_rm3wq"]
 radius = 68.884
 
-[node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 14
 script = ExtResource("1_p10un")
 
@@ -142,7 +142,7 @@ position = Vector2(0, -39)
 scale = Vector2(13, 13)
 sprite_frames = SubResource("SpriteFrames_uv3tg")
 animation = &"standing"
-frame_progress = 0.641899
+frame_progress = 0.136911
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_6iuv4")

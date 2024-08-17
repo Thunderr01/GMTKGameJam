@@ -1,8 +1,11 @@
 extends CharacterBody2D
 
-@export var speed = 400
+@export var regular_speed = 400
+@export var jump_speed = 600
 @export var cables_handler: Node2D
 var _current_connection_point: ConnectionPoint
+var _should_jump: bool = false
+var speed = regular_speed
 
 func _ready():
 	$AnimatedSprite2D.play("standing")
@@ -10,6 +13,23 @@ func _ready():
 func get_input():
 	var input_direction = Input.get_vector("Left", "Right", "Up", "Down")
 	velocity = input_direction.normalized() * speed
+	
+	if Input.is_action_just_pressed("Jump"):
+		_should_jump = true
+		speed = jump_speed
+		collision_mask ^= 8
+		$RopeBreaker.monitoring = false
+		var tween = create_tween()
+		tween.tween_property($AnimatedSprite2D, "position", Vector2(0, -200), 0.15)
+		tween.chain().tween_property($AnimatedSprite2D, "position", Vector2(0, 0), 0.15)
+		tween.finished.connect(tween_finished)
+
+
+func tween_finished():
+	speed = regular_speed
+	collision_mask ^= 8
+	$RopeBreaker.monitoring = true
+
 
 func connection_point_visible(connection_point: ConnectionPoint):
 	_current_connection_point = connection_point
