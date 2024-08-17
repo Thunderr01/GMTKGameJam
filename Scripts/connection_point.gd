@@ -55,6 +55,7 @@ func _remove_rope():
 		return
 	remove_child(_rope)
 	_rope = null
+	$Snap.play()
 
 func _break_cable_handler():
 	set_as_broken()
