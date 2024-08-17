@@ -4,6 +4,9 @@ extends CharacterBody2D
 @export var cables_handler: Node2D
 var _current_connection_point: ConnectionPoint
 
+func _ready():
+	$AnimatedSprite2D.play("standing")
+
 func get_input():
 	var input_direction = Input.get_vector("Left", "Right", "Up", "Down")
 	velocity = input_direction.normalized() * speed
@@ -26,4 +29,18 @@ func _physics_process(delta):
 	move_and_slide()
 	check_point_connection()
 	#check_cable_collision()
-		
+	handle_animation()
+
+func handle_animation():
+	if !velocity:
+		$AnimatedSprite2D.stop()
+		return
+	
+	if velocity.y < 0:
+		$AnimatedSprite2D.play("walking_back")
+	else:
+		$AnimatedSprite2D.play("walking")
+		if velocity.x > 0:
+			$AnimatedSprite2D.flip_h = true
+		else:
+			$AnimatedSprite2D.flip_h = false
