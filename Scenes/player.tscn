@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://d3culkoy37cgp"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_p10un"]
-[ext_resource type="Texture2D" uid="uid://dtd7oxm0cvdbl" path="res://Art/main_girl.png" id="2_dnxyh"]
+[ext_resource type="Texture2D" uid="uid://biasqhe2deu41" path="res://icon.svg" id="2_li4xk"]
 [ext_resource type="Script" path="res://addons/ropesim/RopeHandle.gd" id="3_c20bl"]
 [ext_resource type="PackedScene" path="res://Scenes/connection_handler.tscn" id="4_oj2c8"]
 
@@ -13,9 +13,9 @@ collision_mask = 6
 script = ExtResource("1_p10un")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -39)
-scale = Vector2(13, 13)
-texture = ExtResource("2_dnxyh")
+position = Vector2(0, -28)
+scale = Vector2(1, 1.4375)
+texture = ExtResource("2_li4xk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0.5)
