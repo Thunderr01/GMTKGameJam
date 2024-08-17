@@ -1,22 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://xds7xy86xm8a"]
+[gd_scene load_steps=5 format=3 uid="uid://xds7xy86xm8a"]
 
 [ext_resource type="Texture2D" uid="uid://biasqhe2deu41" path="res://icon.svg" id="1_lcusf"]
-[ext_resource type="PackedScene" uid="uid://cmsmwaoc1hl42" path="res://Scenes/connection_point.tscn" id="2_nd4tx"]
+[ext_resource type="Script" path="res://Scripts/server.gd" id="1_yreji"]
+[ext_resource type="PackedScene" uid="uid://duon1qi100ngv" path="res://Scenes/connection_point.tscn" id="2_nd4tx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_murm5"]
-size = Vector2(126, 108)
+size = Vector2(128, 129)
 
 [node name="Server" type="StaticBody2D"]
 collision_layer = 2
+script = ExtResource("1_yreji")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 1, 1)
 texture = ExtResource("1_lcusf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 11)
+position = Vector2(1, 0.5)
 shape = SubResource("RectangleShape2D_murm5")
 
 [node name="ConnectionPoint" parent="." instance=ExtResource("2_nd4tx")]
-position = Vector2(-42, -13)
+position = Vector2(-45, -37)
 rotation = 1.5708

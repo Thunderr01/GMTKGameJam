@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_p10un"]
 [ext_resource type="Texture2D" uid="uid://biasqhe2deu41" path="res://icon.svg" id="2_li4xk"]
 [ext_resource type="Script" path="res://addons/ropesim/RopeHandle.gd" id="3_c20bl"]
-[ext_resource type="PackedScene" uid="uid://blbo54lvd7gbn" path="res://Scenes/connection_handler.tscn" id="4_oj2c8"]
+[ext_resource type="PackedScene" path="res://Scenes/connection_handler.tscn" id="4_oj2c8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6iuv4"]
 radius = 64.158
