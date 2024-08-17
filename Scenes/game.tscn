@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dv8jaa2k3xtbu"]
+[gd_scene load_steps=6 format=3 uid="uid://dv8jaa2k3xtbu"]
 
 [ext_resource type="PackedScene" uid="uid://d3culkoy37cgp" path="res://Scenes/player.tscn" id="1_7kpdi"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_god2k"]
 [ext_resource type="PackedScene" uid="uid://xds7xy86xm8a" path="res://Scenes/server.tscn" id="2_clrdj"]
 [ext_resource type="Script" path="res://Scripts/connection_handler.gd" id="3_fjnst"]
+[ext_resource type="Texture2D" uid="uid://ws1qrvnrinks" path="res://Art/floor_tile.png" id="5_cta8k"]
 
 [node name="game" type="Node2D"]
 y_sort_enabled = true
@@ -21,7 +22,7 @@ remote_path = NodePath("../../Camera2D")
 position = Vector2(426, 152)
 
 [node name="Server2" parent="." instance=ExtResource("2_clrdj")]
-position = Vector2(166, 367)
+position = Vector2(204, 461)
 scale = Vector2(-1, 1)
 
 [node name="RopeHandler" type="Node2D" parent="."]
@@ -30,12 +31,24 @@ scale = Vector2(-1, 1)
 script = ExtResource("3_fjnst")
 
 [node name="Server4" parent="." instance=ExtResource("2_clrdj")]
-position = Vector2(386, 401)
+position = Vector2(648, 376)
+rotation = -6.28319
 
 [node name="Server3" parent="." instance=ExtResource("2_clrdj")]
-position = Vector2(202, 212)
+position = Vector2(92, 219)
 scale = Vector2(-1, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(373, 264)
 scale = Vector2(0.365, 0.365)
+
+[node name="FloorTile" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = -239.0
+offset_top = -101.0
+offset_right = 6.00002
+offset_bottom = 43.0
+scale = Vector2(5, 5)
+texture = ExtResource("5_cta8k")
+stretch_mode = 1
+metadata/_edit_lock_ = true
