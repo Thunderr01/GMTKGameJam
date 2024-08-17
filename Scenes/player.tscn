@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3culkoy37cgp"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_p10un"]
+[ext_resource type="Texture2D" uid="uid://biasqhe2deu41" path="res://icon.svg" id="2_li4xk"]
+[ext_resource type="Script" path="res://addons/ropesim/RopeHandle.gd" id="3_c20bl"]
+[ext_resource type="PackedScene" uid="uid://blbo54lvd7gbn" path="res://Scenes/connection_handler.tscn" id="4_oj2c8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_spsc3"]
+size = Vector2(128, 127)
+
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
+collision_mask = 6
+script = ExtResource("1_p10un")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_li4xk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_spsc3")
+
+[node name="RopeHandle" type="Marker2D" parent="."]
+script = ExtResource("3_c20bl")
+strength = 1.0
+
+[node name="ConnectionHandler" parent="." instance=ExtResource("4_oj2c8")]

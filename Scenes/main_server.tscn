@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfck1k7lvcccf"]
+
+[ext_resource type="Script" path="res://Scripts/nexus.gd" id="1_vxfk4"]
+[ext_resource type="Texture2D" uid="uid://biasqhe2deu41" path="res://icon.svg" id="2_ygsw5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0jeg4"]
+size = Vector2(224, 205)
+
+[node name="Nexus" type="StaticBody2D"]
+collision_layer = 8
+script = ExtResource("1_vxfk4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 3.5)
+shape = SubResource("RectangleShape2D_0jeg4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.00784314, 0, 1)
+scale = Vector2(1.8125, 1.64062)
+texture = ExtResource("2_ygsw5")
