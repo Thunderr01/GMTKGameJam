@@ -1,13 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://xds7xy86xm8a"]
+[gd_scene load_steps=5 format=3 uid="uid://xds7xy86xm8a"]
 
+<<<<<<< HEAD
 [ext_resource type="Texture2D" uid="uid://bwbpm40qx8k35" path="res://Art/big_server.png" id="1_orxg3"]
 [ext_resource type="PackedScene" uid="uid://cmsmwaoc1hl42" path="res://Scenes/connection_point.tscn" id="2_nd4tx"]
+=======
+[ext_resource type="Texture2D" uid="uid://biasqhe2deu41" path="res://icon.svg" id="1_lcusf"]
+[ext_resource type="Script" path="res://Scripts/server.gd" id="1_yreji"]
+[ext_resource type="PackedScene" uid="uid://duon1qi100ngv" path="res://Scenes/connection_point.tscn" id="2_nd4tx"]
+>>>>>>> 4f998a2 (created server class, started work on server choosing algorithm)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_murm5"]
 size = Vector2(195, 115)
 
 [node name="Server" type="StaticBody2D"]
 collision_layer = 2
+script = ExtResource("1_yreji")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(3.55271e-15, -10)
