@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bf2g605bfsojd"]
+
+[ext_resource type="Script" path="res://Scripts/stage_manager.gd" id="1_owrlo"]
+
+[node name="EventSpawner" type="Node"]
+script = ExtResource("1_owrlo")

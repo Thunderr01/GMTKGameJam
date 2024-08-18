@@ -7,6 +7,9 @@ var connected_server: Server
 var is_blinking = false
 var blink_color: Color
 
+func _ready():
+	get_parent().get_node("StageManager").register_server(self)
+
 func _process(delta):
 	if is_blinking:
 		self.connection_point.blink(blink_color)

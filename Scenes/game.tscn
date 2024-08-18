@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://5gggsjnfvtup" path="res://Audio/Servers extra action music loop.ogg" id="7_ltx5y"]
 [ext_resource type="PackedScene" uid="uid://8cky22ghs3dr" path="res://Scenes/servers/small_standing_server.tscn" id="7_oqfnm"]
 [ext_resource type="AudioStream" uid="uid://b763ryg5heur6" path="res://Audio/Servers AMB loop.ogg" id="9_7og3o"]
-[ext_resource type="Script" path="res://Scripts/events_manager.gd" id="10_aextn"]
+[ext_resource type="Script" path="res://Scripts/stage_manager.gd" id="10_aextn"]
 [ext_resource type="Script" path="res://Scripts/stage.gd" id="11_ys0vv"]
 [ext_resource type="Script" path="res://Scripts/Events/server_connection_event.gd" id="12_skse3"]
 [ext_resource type="Script" path="res://Scripts/globals.gd" id="13_fvjn8"]
