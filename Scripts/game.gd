@@ -19,7 +19,9 @@ func _ready():
 func _process(delta: float) -> void:
 	time = timer.wait_time - timer.time_left
 	if time - time_of_last_blinking >= time_per_blink:
-		blink_two_servers()
+		print("NEXT LEVEL")
+		$StageManager.next_level()
+		#blink_two_servers()
 		time_of_last_blinking += 10.0		
 
 func blink_two_servers():

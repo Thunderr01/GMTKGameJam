@@ -26,7 +26,7 @@ random_volume_offset_db = 1.0
 streams_count = 1
 stream_0/stream = ExtResource("5_la4fu")
 
-[node name="ConnectionPoint" type="StaticBody2D"]
+[node name="ConnectionPoint" type="StaticBody2D" groups=["connection_point"]]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_8mdiv")
