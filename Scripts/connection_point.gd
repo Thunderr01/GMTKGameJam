@@ -127,6 +127,9 @@ func blink(color: Color):
 func unblink():
 	$Sprite2D.modulate = Color.hex(0x00ff00ff)
 
+func is_connected_to(connection: ConnectionPoint):
+	return _other_connection_point == connection
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
