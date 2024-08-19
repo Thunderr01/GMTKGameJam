@@ -5,6 +5,7 @@ var _connection_point1: ConnectionPoint
 var _connection_point2: ConnectionPoint
 var _running: bool = false
 var _added_increment = false
+var _rng = RandomNumberGenerator.new()
 
 const INCREMENT = 2
 
@@ -52,8 +53,11 @@ func start_event():
 
 	# shit is fucked
 	if _connection_point1 == null or _connection_point2 == null:
-		return	
-	_connection_point1.blink(Color.DARK_MAGENTA)
-	_connection_point2.blink(Color.DARK_MAGENTA)
+		return
+	
+	var hue = lerp(0.2, 0.8, _rng.randf()) # pick a non-red hue
+	var pair_color = Color.from_hsv(hue, 0.8, 0.8)
+	_connection_point1.blink(pair_color)
+	_connection_point2.blink(pair_color)
 	_running = true	
 	pass
