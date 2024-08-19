@@ -170,11 +170,16 @@ func set_connection_success_state(new_state: ConnectionSuccessState):
 	connection_success_state = new_state
 	
 	if connection_success_state == ConnectionSuccessState.CORRECT_CONNECTION:
-		$ConnectionCloseSprite.modulate = pair_color
+		set_cable_color(pair_color)
 	elif connection_success_state == ConnectionSuccessState.WRONG_CONNECTION:
-		$ConnectionCloseSprite.modulate = wrong_pair_color
+		set_cable_color(wrong_pair_color)
 	else:
-		$ConnectionCloseSprite.modulate = _default_connection_color
+		set_cable_color(_default_connection_color)
+
+func set_cable_color(new_color: Color):
+	$ConnectionCloseSprite.modulate = new_color
+	if _rope:
+		_rope.get_node("Rope").color = new_color
 
 func blink(color: Color):
 	pair_color = color
