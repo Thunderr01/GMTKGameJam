@@ -222,8 +222,8 @@ func _stop_creating_score():
 
 func _create_score_badge():
 	var new_score_badge = SCORE_BADGE.instantiate()
-	add_child(new_score_badge)
-	new_score_badge.scale = Vector2.ONE * 0.7
+	get_parent().add_child(new_score_badge)
+	new_score_badge.position = position
 	if connection_success_state == ConnectionSuccessState.WRONG_CONNECTION:
 		new_score_badge.set_badge_to_minus_user()
 	else:
