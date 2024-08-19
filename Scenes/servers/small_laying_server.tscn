@@ -21,7 +21,9 @@ position = Vector2(0.5, -7.75)
 shape = SubResource("RectangleShape2D_murm5")
 
 [node name="ConnectionPoint" parent="." instance=ExtResource("2_nd4tx")]
-position = Vector2(-30, -2)
+position = Vector2(-24, -3)
+scale = Vector2(1.75, 1.4)
 
 [node name="ConnectionPoint2" parent="." instance=ExtResource("2_nd4tx")]
-position = Vector2(20, -2)
+position = Vector2(21, -3)
+scale = Vector2(1.4, 1.4)

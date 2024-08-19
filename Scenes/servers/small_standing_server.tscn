@@ -5,23 +5,25 @@
 [ext_resource type="PackedScene" uid="uid://cmsmwaoc1hl42" path="res://Scenes/connection_point.tscn" id="3_o57xg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_murm5"]
-size = Vector2(61, 89)
+size = Vector2(61.85, 89)
 
 [node name="Server" type="StaticBody2D"]
 collision_layer = 2
 script = ExtResource("1_k35di")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(10.5, -10)
+position = Vector2(10.5546, -9.66592)
 scale = Vector2(7, 7)
 texture = ExtResource("2_pyx86")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -9.5)
+position = Vector2(0.0750237, -9.5)
 shape = SubResource("RectangleShape2D_murm5")
 
 [node name="ConnectionPoint" parent="." instance=ExtResource("3_o57xg")]
-position = Vector2(0, -30)
+position = Vector2(0, -27.2806)
+scale = Vector2(1.78, 1.416)
 
 [node name="ConnectionPoint2" parent="." instance=ExtResource("3_o57xg")]
 position = Vector2(0, 22)
+scale = Vector2(1.76, 1.4)

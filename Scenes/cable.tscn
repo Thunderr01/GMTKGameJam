@@ -16,6 +16,8 @@ rope_path = NodePath("../Rope")
 
 [node name="Rope" type="Node2D" parent="."]
 script = ExtResource("1_w31fv")
+line_width = 4.0
+color = Color(0.0927649, 0.0927194, 0.17885, 1)
 
 [node name="WaitBeforeBreaking" type="Timer" parent="."]
 wait_time = 0.4

@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cmsmwaoc1hl42"]
+[gd_scene load_steps=12 format=3 uid="uid://cmsmwaoc1hl42"]
 
 [ext_resource type="Script" path="res://Scripts/connection_point.gd" id="1_8mdiv"]
-[ext_resource type="Texture2D" uid="uid://biasqhe2deu41" path="res://icon.svg" id="1_44wws"]
+[ext_resource type="Texture2D" uid="uid://dvkp1l2q5hlqm" path="res://Art/connection_point.png" id="2_m41hy"]
+[ext_resource type="Texture2D" uid="uid://yub55tw63kvv" path="res://Art/connection_point_outline.png" id="3_bgqb0"]
 [ext_resource type="AudioStream" uid="uid://c7qkpxwfup052" path="res://Audio/Disconnect.wav" id="3_eevo3"]
+[ext_resource type="Texture2D" uid="uid://tq6l0va6vofb" path="res://Art/connection_light.png" id="4_jqo8j"]
 [ext_resource type="AudioStream" uid="uid://dryy11bemu451" path="res://Audio/Connect.wav" id="4_oijxr"]
 [ext_resource type="AudioStream" uid="uid://kpbf2geen7mm" path="res://Audio/Snap.wav" id="5_la4fu"]
 
@@ -31,10 +33,22 @@ collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_8mdiv")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0, 1, 0, 0.866667)
-scale = Vector2(0.15625, 0.15625)
-texture = ExtResource("1_44wws")
+[node name="ConnectionCloseSprite" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.160501, 0.160537, 0.285093, 1)
+scale = Vector2(2.48073, 2.48307)
+texture = ExtResource("2_m41hy")
+
+[node name="Outline" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(2.48073, 2.48307)
+texture = ExtResource("3_bgqb0")
+
+[node name="Light" type="Sprite2D" parent="."]
+modulate = Color(0.140503, 0.139933, 0.255308, 1)
+position = Vector2(0, 12.5)
+scale = Vector2(2.481, 0.625)
+texture = ExtResource("4_jqo8j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_vwmih")
