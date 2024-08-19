@@ -3,16 +3,16 @@ extends Line2D
 class_name RopeRendererLine2D
 
 enum PositionMode {
-    ## Render the rope at this node's position, regardless of where the rope actually resides.
-    UseLineRendererPosition,
+	## Render the rope at this node's position, regardless of where the rope actually resides.
+	UseLineRendererPosition,
 
-    ## Render the rope at the rope node's position. If the rope's beginning endpoint is not fixed,
-    ## the rope could actually reside somewhere else than its node.
-    UseRopeNodePosition,
+	## Render the rope at the rope node's position. If the rope's beginning endpoint is not fixed,
+	## the rope could actually reside somewhere else than its node.
+	UseRopeNodePosition,
 
-    ## Render the rope at the position of the rope's first point. This is the most accurate
-    ## positioning method and will always correspond to the ropes true global position.
-    UseRopeFirstPointPosition,
+	## Render the rope at the position of the rope's first point. This is the most accurate
+	## positioning method and will always correspond to the ropes true global position.
+	UseRopeFirstPointPosition,
 }
 
 const UPDATE_HOOK = "on_post_update"
@@ -40,56 +40,56 @@ var _helper: RopeToolHelper
 
 
 func _init() -> void:
-    if not _helper:
-        _helper = RopeToolHelper.new(RopeToolHelper.UPDATE_HOOK_POST, self, "refresh")
-        add_child(_helper)
+	if not _helper:
+		_helper = RopeToolHelper.new(RopeToolHelper.UPDATE_HOOK_POST, self, "refresh")
+		add_child(_helper)
 
 
 func _ready() -> void:
-    set_rope_path(target_rope_path)
-    set_auto_update(auto_update)
+	set_rope_path(target_rope_path)
+	set_auto_update(auto_update)
 
 
 func refresh() -> void:
-    var target: Rope = _helper.target_rope
+	var target: Rope = _helper.target_rope
 
-    if target and target.get_num_points() > 0 and visible:
-        var xform: Transform2D
+	if target and target.get_num_points() > 0 and visible:
+		var xform: Transform2D
 
-        match position_mode:
-            PositionMode.UseLineRendererPosition:
-                xform = Transform2D(0, -target.get_point(0))
-            PositionMode.UseRopeNodePosition:
-                xform = Transform2D(0, -global_position - target.get_point(0) + target.global_position)
-            PositionMode.UseRopeFirstPointPosition:
-                xform = Transform2D(0, -global_position)
+		match position_mode:
+			PositionMode.UseLineRendererPosition:
+				xform = Transform2D(0, -target.get_point(0))
+			PositionMode.UseRopeNodePosition:
+				xform = Transform2D(0, -global_position - target.get_point(0) + target.global_position)
+			PositionMode.UseRopeFirstPointPosition:
+				xform = Transform2D(0, -global_position)
 
-        xform = xform.scaled(scale)
-        var p: PackedVector2Array = xform * target.get_points()
+		xform = xform.scaled(scale)
+		var p: PackedVector2Array = xform * target.get_points()
 
-        if invert:
-            p.reverse()
+		if invert:
+			p.reverse()
 
-        points = p
-        global_rotation = 0
+		points = p
+		global_rotation = 0
 
 
 func set_rope_path(value: NodePath) -> void:
-    target_rope_path = value
-    if is_inside_tree():
-        _helper.set_target_rope_path(target_rope_path, self)
+	target_rope_path = value
+	if is_inside_tree():
+		_helper.set_target_rope_path(target_rope_path, self)
 
 
 func _force_update(_value: bool) -> void:
-    refresh()
+	refresh()
 
 
 func set_position_mode(value: PositionMode) -> void:
-    position_mode = value
+	position_mode = value
 
 
 func set_auto_update(value: bool) -> void:
-    _helper.enable = value
+	_helper.enable = value
 
 func get_auto_update() -> bool:
-    return _helper.enable
+	return _helper.enable

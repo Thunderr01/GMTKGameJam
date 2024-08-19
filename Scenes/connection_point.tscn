@@ -61,3 +61,6 @@ stream = SubResource("AudioStreamRandomizer_ivw6p")
 
 [node name="Snap" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_wijsl")
+
+[node name="ScoreBadgeTimer" type="Timer" parent="."]
+wait_time = 0.8

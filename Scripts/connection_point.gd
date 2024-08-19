@@ -16,6 +16,7 @@ enum ConnectionSuccessState {
 }
 
 const CABLE = preload("res://Scenes/cable.tscn")
+const SCORE_BADGE = preload("res://Scenes/score_badge.tscn")
 const NO_PAIR_COLOR = Color.BLACK;
 
 @export var blink_interval = 0.2
@@ -31,13 +32,13 @@ var _default_color: Color
 var _light_off_color: Color
 var _blink_tween: Tween
 
-
 var pair_color: Color = NO_PAIR_COLOR
 
 
 func _ready():
 	_default_color = $ConnectionCloseSprite.modulate
 	_light_off_color = $Light.modulate
+	$ScoreBadgeTimer.timeout.connect(_create_score_badge)
 
 
 ## Adds a new RopeHandle child which handles the rope `rope_path`
@@ -174,10 +175,13 @@ func set_connection_success_state(new_state: ConnectionSuccessState):
 	if connection_success_state == ConnectionSuccessState.CORRECT_CONNECTION:
 		set_cable_color(pair_color)
 		stop_blink(pair_color)
+		_start_creating_score()
 	elif connection_success_state == ConnectionSuccessState.WRONG_CONNECTION:
 		set_cable_color(wrong_pair_color)
+		_start_creating_score()
 	else:
 		set_cable_color(_default_color)
+		_stop_creating_score()
 		if pair_color == NO_PAIR_COLOR:
 			stop_blink(_default_color)
 		else:
@@ -210,7 +214,17 @@ func unblink():
 func is_connected_to(connection: ConnectionPoint):
 	return _other_connection_point == connection
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-		
+func _start_creating_score():
+	$ScoreBadgeTimer.start()
+
+func _stop_creating_score():
+	$ScoreBadgeTimer.stop()
+
+func _create_score_badge():
+	var new_score_badge = SCORE_BADGE.instantiate()
+	get_parent().add_child(new_score_badge)
+	new_score_badge.position = position
+	if connection_success_state == ConnectionSuccessState.WRONG_CONNECTION:
+		new_score_badge.set_badge_to_minus_user()
+	else:
+		new_score_badge.set_badge_to_plus_user()
