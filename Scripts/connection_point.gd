@@ -190,6 +190,7 @@ func set_cable_color(new_color: Color):
 
 func blink(color: Color):
 	pair_color = color
+	stop_blink(pair_color)
 	_blink_tween = get_tree().create_tween()
 	_blink_tween.tween_property($Light, "modulate", pair_color, 0.05)
 	_blink_tween.chain().tween_interval(blink_interval)
