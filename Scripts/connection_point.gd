@@ -15,6 +15,12 @@ var connection_state = ConnectionState.FREE
 var _rope: Cable
 var _rope_handle: RopeHandle
 var _other_connection_point: ConnectionPoint
+var _light_off_color: Color
+
+
+func _ready():
+	_light_off_color = $Light.modulate
+
 
 ## Adds a new RopeHandle child which handles the rope `rope_path`
 ## @param rope_path: NodePath to the rope to connect to
@@ -73,22 +79,22 @@ func interact(other_connection: ConnectionPoint) -> ConnectionState:
 				_other_connection_point = other_connection
 				_other_connection_point.set_end_connection(self)
 				_add_cable_handle(_other_connection_point.get_rope_path())
-				connection_state = ConnectionState.CONNECTED_END
+				set_connection_state(ConnectionState.CONNECTED_END)
 			# There aren't an other connection, which means this is the connecting
 			else:
 				_add_rope()
-				connection_state = ConnectionState.HANGING
+				set_connection_state(ConnectionState.HANGING)
 		ConnectionState.HANGING:
 			_remove_rope()
-			connection_state = ConnectionState.FREE
+			set_connection_state(ConnectionState.FREE)
 		ConnectionState.CONNECTED_END:
 			_remove_cable_handle()
 			_other_connection_point.set_as_hanging()
-			connection_state = ConnectionState.FREE
+			set_connection_state(ConnectionState.FREE)
 		ConnectionState.CONNECTED_START:
 			_remove_rope()
 			_other_connection_point.set_as_hanging()
-			connection_state = ConnectionState.FREE
+			set_connection_state(ConnectionState.FREE)
 	return connection_state
 
 func get_rope_path() -> NodePath:
@@ -100,13 +106,13 @@ func set_as_hanging():
 		_add_rope()
 		
 	_rope.cable_hanging()
-	connection_state = ConnectionState.HANGING
+	set_connection_state(ConnectionState.HANGING)
 	$Disconnect.play()
 	
 func set_end_connection(end: ConnectionPoint):
 	_other_connection_point = end
 	_rope.cable_connected()
-	connection_state = ConnectionState.CONNECTED_START
+	set_connection_state(ConnectionState.CONNECTED_START)
 	$Connect.play()
 
 # This functions sets as broken, basically setting it to FREE state
@@ -115,17 +121,27 @@ func set_as_broken():
 		_remove_cable_handle()
 	if connection_state == ConnectionState.CONNECTED_START:
 		_remove_rope()
-	connection_state = ConnectionState.FREE
+	set_connection_state(ConnectionState.FREE)
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func set_connection_state(new_state: ConnectionState):
+	connection_state = new_state
+	update_connection_sprite()
+
+func update_connection_sprite():
+	var connected_states = [ConnectionState.CONNECTED_START, ConnectionState.CONNECTED_END]
+	$ConnectionCloseSprite.visible = connection_state in connected_states
+
+func highlight():
+	$Outline.visible = true
+
+func cancel_highlight():
+	$Outline.visible = false
 
 func blink(color: Color):
-	$Sprite2D.modulate = color
+	$Light.modulate = color
 	
 func unblink():
-	$Sprite2D.modulate = Color.hex(0x00ff00ff)
+	$Light.modulate = _light_off_color
 
 func is_connected_to(connection: ConnectionPoint):
 	return _other_connection_point == connection

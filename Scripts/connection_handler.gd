@@ -58,13 +58,13 @@ func highlight_closest_connection():
 			closet_body = body
 	if _current_connection_point == null:
 		_current_connection_point = closet_body
-		closet_body.blink(Color.RED)
+		closet_body.highlight()
 	if closet_body != _current_connection_point:
-		_current_connection_point.unblink()
-		closet_body.blink(Color.RED)
+		_current_connection_point.cancel_highlight()
+		closet_body.highlight()
 		_current_connection_point = closet_body
 
 func _on_area_detect_connection_body_exited(body: Node2D) -> void:
 	if _current_connection_point == body:
-		_current_connection_point.unblink()
+		_current_connection_point.cancel_highlight()
 		_current_connection_point = null
