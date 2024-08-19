@@ -128,8 +128,7 @@ func set_connection_state(new_state: ConnectionState):
 	update_connection_sprite()
 
 func update_connection_sprite():
-	var connected_states = [ConnectionState.CONNECTED_START, ConnectionState.CONNECTED_END]
-	$ConnectionCloseSprite.visible = connection_state in connected_states
+	$ConnectionCloseSprite.visible = connection_state != ConnectionState.FREE
 
 func highlight():
 	$Outline.visible = true

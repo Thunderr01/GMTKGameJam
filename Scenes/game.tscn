@@ -47,7 +47,7 @@ metadata/_edit_lock_ = true
 y_sort_enabled = true
 
 [node name="Server" parent="Servers" instance=ExtResource("5_lbq0k")]
-position = Vector2(99, 166)
+position = Vector2(99, 165)
 
 [node name="Server2" parent="Servers" instance=ExtResource("5_lbq0k")]
 position = Vector2(228, 165)
