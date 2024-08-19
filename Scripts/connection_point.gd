@@ -8,17 +8,33 @@ enum ConnectionState {
 	CONNECTED_START
 }
 
+enum ConnectionSuccessState {
+	IDLE,
+	WAITING_TO_CONNECT,
+	CORRECT_CONNECTION,
+	WRONG_CONNECTION
+}
+
 const CABLE = preload("res://Scenes/cable.tscn")
+const NO_PAIR_COLOR = Color.BLACK;
+
+@export var wrong_pair_color = Color.RED
 
 var connection_state = ConnectionState.FREE
+var connection_success_state = ConnectionSuccessState.IDLE
 
 var _rope: Cable
 var _rope_handle: RopeHandle
 var _other_connection_point: ConnectionPoint
+var _default_connection_color: Color
 var _light_off_color: Color
 
 
+var pair_color: Color = NO_PAIR_COLOR
+
+
 func _ready():
+	_default_connection_color = $ConnectionCloseSprite.modulate
 	_light_off_color = $Light.modulate
 
 
@@ -80,6 +96,14 @@ func interact(other_connection: ConnectionPoint) -> ConnectionState:
 				_other_connection_point.set_end_connection(self)
 				_add_cable_handle(_other_connection_point.get_rope_path())
 				set_connection_state(ConnectionState.CONNECTED_END)
+				
+				if pair_color != NO_PAIR_COLOR and pair_color == _other_connection_point.pair_color:
+					set_connection_success_state(ConnectionSuccessState.CORRECT_CONNECTION)
+					_other_connection_point.set_connection_success_state(ConnectionSuccessState.CORRECT_CONNECTION)
+				else:
+					set_connection_success_state(ConnectionSuccessState.WRONG_CONNECTION)
+					_other_connection_point.set_connection_success_state(ConnectionSuccessState.WRONG_CONNECTION)
+				
 			# There aren't an other connection, which means this is the connecting
 			else:
 				_add_rope()
@@ -125,6 +149,12 @@ func set_as_broken():
 
 func set_connection_state(new_state: ConnectionState):
 	connection_state = new_state
+	var _not_paired_states = [ConnectionState.FREE, ConnectionState.HANGING]
+	if connection_state in _not_paired_states:
+		if pair_color == NO_PAIR_COLOR:
+			set_connection_success_state(ConnectionSuccessState.IDLE)
+		else:
+			set_connection_success_state(ConnectionSuccessState.WAITING_TO_CONNECT)
 	update_connection_sprite()
 
 func update_connection_sprite():
@@ -136,10 +166,22 @@ func highlight():
 func cancel_highlight():
 	$Outline.visible = false
 
+func set_connection_success_state(new_state: ConnectionSuccessState):
+	connection_success_state = new_state
+	
+	if connection_success_state == ConnectionSuccessState.CORRECT_CONNECTION:
+		$ConnectionCloseSprite.modulate = pair_color
+	elif connection_success_state == ConnectionSuccessState.WRONG_CONNECTION:
+		$ConnectionCloseSprite.modulate = wrong_pair_color
+	else:
+		$ConnectionCloseSprite.modulate = _default_connection_color
+
 func blink(color: Color):
+	pair_color = color
 	$Light.modulate = color
 	
 func unblink():
+	pair_color = Color.BLACK
 	$Light.modulate = _light_off_color
 
 func is_connected_to(connection: ConnectionPoint):
