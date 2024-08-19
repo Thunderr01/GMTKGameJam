@@ -18,6 +18,7 @@ enum ConnectionSuccessState {
 const CABLE = preload("res://Scenes/cable.tscn")
 const NO_PAIR_COLOR = Color.BLACK;
 
+@export var blink_interval = 0.2
 @export var wrong_pair_color = Color.RED
 
 var connection_state = ConnectionState.FREE
@@ -26,15 +27,16 @@ var connection_success_state = ConnectionSuccessState.IDLE
 var _rope: Cable
 var _rope_handle: RopeHandle
 var _other_connection_point: ConnectionPoint
-var _default_connection_color: Color
+var _default_color: Color
 var _light_off_color: Color
+var _blink_tween: Tween
 
 
 var pair_color: Color = NO_PAIR_COLOR
 
 
 func _ready():
-	_default_connection_color = $ConnectionCloseSprite.modulate
+	_default_color = $ConnectionCloseSprite.modulate
 	_light_off_color = $Light.modulate
 
 
@@ -171,10 +173,15 @@ func set_connection_success_state(new_state: ConnectionSuccessState):
 	
 	if connection_success_state == ConnectionSuccessState.CORRECT_CONNECTION:
 		set_cable_color(pair_color)
+		stop_blink(pair_color)
 	elif connection_success_state == ConnectionSuccessState.WRONG_CONNECTION:
 		set_cable_color(wrong_pair_color)
 	else:
-		set_cable_color(_default_connection_color)
+		set_cable_color(_default_color)
+		if pair_color == NO_PAIR_COLOR:
+			stop_blink(_default_color)
+		else:
+			blink(pair_color)
 
 func set_cable_color(new_color: Color):
 	$ConnectionCloseSprite.modulate = new_color
@@ -183,11 +190,21 @@ func set_cable_color(new_color: Color):
 
 func blink(color: Color):
 	pair_color = color
-	$Light.modulate = color
-	
+	_blink_tween = get_tree().create_tween()
+	_blink_tween.tween_property($Light, "modulate", pair_color, 0.05)
+	_blink_tween.chain().tween_interval(blink_interval)
+	_blink_tween.chain().tween_property($Light, "modulate", _default_color, 0.05)
+	_blink_tween.chain().tween_interval(blink_interval)
+	_blink_tween.set_loops()
+
+func stop_blink(new_light_color: Color):
+	$Light.modulate = new_light_color
+	if _blink_tween:
+		_blink_tween.kill()
+
 func unblink():
 	pair_color = Color.BLACK
-	$Light.modulate = _light_off_color
+	stop_blink(_light_off_color)
 
 func is_connected_to(connection: ConnectionPoint):
 	return _other_connection_point == connection
