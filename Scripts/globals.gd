@@ -10,6 +10,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if not $"../Servers":
+		return
 	subs_increment = $"../Servers".get_connections_score()
 	$UsersPerSecond.text = str(subs_increment * 2) + "/s"
 

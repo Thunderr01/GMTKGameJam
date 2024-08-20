@@ -17,12 +17,16 @@ func _ready():
 	$ThemeEpic.volume_db = -100
 
 func _process(delta: float) -> void:
-	time = timer.wait_time - timer.time_left
-	if time - time_of_last_blinking >= time_per_blink:
-		print("NEXT LEVEL")
+	if not $StageManager.is_stage_running() and $Servers.get_blinking_servers_count() == 0:
+		print("next stage")
 		$StageManager.next_level()
-		#blink_two_servers()
-		time_of_last_blinking += 10.0		
+	
+	#time = timer.wait_time - timer.time_left
+	#if time - time_of_last_blinking >= time_per_blink:
+		#print("NEXT LEVEL")
+		#$StageManager.next_level()
+		##blink_two_servers()
+		#time_of_last_blinking += 10.0
 
 func blink_two_servers():
 	var unblinking_servers = get_all_unblinking_servers()

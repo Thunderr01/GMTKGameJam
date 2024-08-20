@@ -6,13 +6,7 @@ class_name Stage
 @export var event_delay_min: float = 2.0
 @export var event_delay_max: float = 3.0
 
-# random number between event_run_min and event_run_max is gonna be used to
-# spawn that amount of events each time the timer runs out
-@export var event_run_min: int = 1
-@export var event_run_max: int = 1
-
-
-@export var connection_events: int
+var is_running: bool
 
 var _events: Array
 var _timer: Timer
@@ -29,25 +23,29 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-	
+
 func start_stage():
+	is_running = true
 	_events = get_children()
 	_events.erase(_timer)
-	_timer.wait_time = randf_range(event_delay_min, event_delay_max)
-	_timer.start()
-	pass
+	
+	if event_delay_max == 0:
+		for event in _events:
+			event.start_event()
+		is_running = false
+	else:
+		_timer.wait_time = 0.1  # start stage immediately
+		_timer.start()
 	
 func _timeout_spawn_events():
-	
-	var events_to_run = randi_range(event_run_min, event_run_max)
-	for i in events_to_run:
-		var event = _events.pick_random()
-		#finished all the events
-		if event == null:
-			return
-		# start the event and remove it from the array
-		event.start_event()
-		_events.erase(event)
+	var event = _events.pick_random()
+	#finished all the events
+	if event == null:
+		is_running = false
+		return
+	# start the event and remove it from the array
+	event.start_event()
+	_events.erase(event)
 	
 	_timer.wait_time = randf_range(event_delay_min, event_delay_max)
 	_timer.start()
