@@ -2,7 +2,7 @@ extends Node
 class_name StageManager
 
 var _stages: Array
-var _next_stage: int = 0
+var _stage_index: int = -1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,13 +15,20 @@ func _process(delta: float) -> void:
 	pass
 
 
+func is_stage_running():
+	if _stage_index < 0 or _stage_index >= _stages.size():
+		return false
+	return _stages[_stage_index].is_running
+
+
 ## This function starts the next stage
 ## @return: True if a new stage is started, false otherwise if ther are no stages left
 func next_level() -> bool :
+	_stage_index += 1
+	
 	# return if there are no stages left
-	if _next_stage >= _stages.size():
+	if _stage_index >= _stages.size():
 		return false
 	
-	_stages[_next_stage].start_stage()
-	_next_stage += 1
+	_stages[_stage_index].start_stage()
 	return true

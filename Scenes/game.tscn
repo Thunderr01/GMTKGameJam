@@ -1,9 +1,10 @@
-[gd_scene load_steps=32 format=3 uid="uid://dv8jaa2k3xtbu"]
+[gd_scene load_steps=34 format=3 uid="uid://dv8jaa2k3xtbu"]
 
 [ext_resource type="PackedScene" uid="uid://d3culkoy37cgp" path="res://Scenes/player.tscn" id="1_7kpdi"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_god2k"]
 [ext_resource type="PackedScene" uid="uid://xds7xy86xm8a" path="res://Scenes/servers/small_laying_server.tscn" id="2_clrdj"]
 [ext_resource type="Texture2D" uid="uid://c8f641ax27ado" path="res://Art/background.png" id="3_dh51c"]
+[ext_resource type="Script" path="res://Scripts/hidden_servers.gd" id="4_e7edb"]
 [ext_resource type="Script" path="res://Scripts/servers.gd" id="4_op1xf"]
 [ext_resource type="PackedScene" uid="uid://bua1u10sfetjl" path="res://Scenes/servers/big_server.tscn" id="5_lbq0k"]
 [ext_resource type="AudioStream" uid="uid://dlh0lhjwgay2g" path="res://Audio/Servers base music loop.ogg" id="6_bxts1"]
@@ -15,6 +16,7 @@
 [ext_resource type="Script" path="res://Scripts/Events/server_connection_event.gd" id="12_skse3"]
 [ext_resource type="Script" path="res://Scripts/globals.gd" id="13_fvjn8"]
 [ext_resource type="PackedScene" uid="uid://f4a3clw3v1qs" path="res://Scenes/end_screen.tscn" id="15_ougsk"]
+[ext_resource type="Script" path="res://Scripts/add_server_event.gd" id="14_b7acn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_td48m"]
 atlas = ExtResource("3_dh51c")
@@ -114,7 +116,7 @@ y_sort_enabled = true
 script = ExtResource("1_god2k")
 
 [node name="CharacterBody2D" parent="." node_paths=PackedStringArray("cables_handler") instance=ExtResource("1_7kpdi")]
-position = Vector2(-49.3164, 151.561)
+position = Vector2(1.52588e-05, 32)
 scale = Vector2(0.365, 0.365)
 collision_mask = 30
 cables_handler = NodePath("../RopeHandler")
@@ -125,10 +127,10 @@ remote_path = NodePath("../../Camera2D")
 [node name="RopeHandler" type="Node2D" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-49.3164, 151.561)
+position = Vector2(1.52588e-05, 32)
 scale = Vector2(0.365, 0.365)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Background" type="AnimatedSprite2D" parent="."]
 z_index = -100
 z_as_relative = false
 position = Vector2(-6.00002, -101)
@@ -136,42 +138,41 @@ scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_8ng2b")
 autoplay = "default"
 frame_progress = 0.0619071
+metadata/_edit_lock_ = true
 
-[node name="StaticBody2D" type="StaticBody2D" parent="AnimatedSprite2D"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Background"]
 collision_layer = 16
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/StaticBody2D"]
 position = Vector2(189.8, 76)
 shape = SubResource("RectangleShape2D_nl3ks")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="AnimatedSprite2D/StaticBody2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Background/StaticBody2D"]
 position = Vector2(-203.8, 84.2)
 shape = SubResource("RectangleShape2D_xw17q")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="AnimatedSprite2D/StaticBody2D"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Background/StaticBody2D"]
 position = Vector2(-10.8, 164.6)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_5pm6h")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="AnimatedSprite2D/StaticBody2D"]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Background/StaticBody2D"]
 position = Vector2(-9.2, -78.8)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_oxbct")
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="AnimatedSprite2D/StaticBody2D"]
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Background/StaticBody2D"]
 position = Vector2(-144.4, -51)
 shape = SubResource("CircleShape2D_mfock")
 
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="AnimatedSprite2D/StaticBody2D"]
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Background/StaticBody2D"]
 position = Vector2(110.4, -51.2)
 shape = SubResource("CircleShape2D_mfock")
 
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="AnimatedSprite2D/StaticBody2D"]
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Background/StaticBody2D"]
 position = Vector2(-92.8, -52.2)
 shape = SubResource("CircleShape2D_mfock")
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Background"]
 z_index = -100
 z_as_relative = false
 position = Vector2(-544, 1.90735e-06)
@@ -179,7 +180,7 @@ sprite_frames = SubResource("SpriteFrames_8ng2b")
 autoplay = "default"
 frame_progress = 0.0619071
 
-[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Background"]
 z_index = -101
 z_as_relative = false
 position = Vector2(144.4, 207)
@@ -187,7 +188,7 @@ sprite_frames = SubResource("SpriteFrames_8ng2b")
 autoplay = "default"
 frame_progress = 0.0619071
 
-[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Background"]
 z_index = -101
 z_as_relative = false
 position = Vector2(-287.6, 216)
@@ -195,7 +196,7 @@ sprite_frames = SubResource("SpriteFrames_8ng2b")
 autoplay = "default"
 frame_progress = 0.0619071
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background"]
 z_index = -100
 z_as_relative = false
 position = Vector2(511.2, 0)
@@ -203,41 +204,61 @@ sprite_frames = SubResource("SpriteFrames_8ng2b")
 autoplay = "default"
 frame_progress = 0.0619071
 
-[node name="Servers" type="Node2D" parent="."]
+[node name="HiddenServers" type="Node2D" parent="."]
+y_sort_enabled = true
+script = ExtResource("4_e7edb")
+
+[node name="Server1" parent="HiddenServers" instance=ExtResource("7_oqfnm")]
+position = Vector2(-96, -96)
+
+[node name="Server2" parent="HiddenServers" instance=ExtResource("7_oqfnm")]
+position = Vector2(96, -96)
+
+[node name="SmallLayingServer" parent="HiddenServers" instance=ExtResource("2_clrdj")]
+position = Vector2(-72, 128)
+
+[node name="SmallLayingServer2" parent="HiddenServers" instance=ExtResource("2_clrdj")]
+position = Vector2(-184, -72)
+
+[node name="BigServer" parent="HiddenServers" instance=ExtResource("5_lbq0k")]
+position = Vector2(256, 88)
+
+[node name="SmallLayingServer3" parent="HiddenServers" instance=ExtResource("2_clrdj")]
+position = Vector2(-248, 128)
+
+[node name="Server" parent="HiddenServers" instance=ExtResource("7_oqfnm")]
+position = Vector2(-160, 104)
+
+[node name="SmallLayingServer4" parent="HiddenServers" instance=ExtResource("2_clrdj")]
+position = Vector2(136, 312)
+
+[node name="BigServer2" parent="HiddenServers" instance=ExtResource("5_lbq0k")]
+position = Vector2(-392, -80)
+
+[node name="BigServer3" parent="HiddenServers" instance=ExtResource("5_lbq0k")]
+position = Vector2(360, -128)
+
+[node name="Server3" parent="HiddenServers" instance=ExtResource("7_oqfnm")]
+position = Vector2(48, 288)
+
+[node name="SmallLayingServer5" parent="HiddenServers" instance=ExtResource("2_clrdj")]
+position = Vector2(-144, 344)
+
+[node name="BigServer4" parent="HiddenServers" instance=ExtResource("5_lbq0k")]
+position = Vector2(-232, 288)
+
+[node name="Server4" parent="HiddenServers" instance=ExtResource("7_oqfnm")]
+position = Vector2(392, 312)
+
+[node name="SmallLayingServer6" parent="HiddenServers" instance=ExtResource("2_clrdj")]
+position = Vector2(472, 88)
+
+[node name="Server5" parent="HiddenServers" instance=ExtResource("7_oqfnm")]
+position = Vector2(-488, 184)
+
+[node name="Servers" type="Node2D" parent="." groups=["servers"]]
 y_sort_enabled = true
 script = ExtResource("4_op1xf")
-
-[node name="Server" parent="Servers" node_paths=PackedStringArray("_connection_points") instance=ExtResource("5_lbq0k")]
-position = Vector2(-349, 85)
-_connection_points = []
-
-[node name="Server2" parent="Servers" node_paths=PackedStringArray("_connection_points") instance=ExtResource("5_lbq0k")]
-position = Vector2(-220, 85)
-_connection_points = []
-
-[node name="SmallLayingServer" parent="Servers" instance=ExtResource("2_clrdj")]
-position = Vector2(-388.446, 338.446)
-
-[node name="SmallLayingServer2" parent="Servers" instance=ExtResource("2_clrdj")]
-position = Vector2(-213.625, 338.5)
-
-[node name="SmallLayingServer3" parent="Servers" instance=ExtResource("2_clrdj")]
-position = Vector2(150.464, 238.863)
-
-[node name="SmallLayingServer4" parent="Servers" instance=ExtResource("2_clrdj")]
-position = Vector2(260.044, 238.863)
-
-[node name="SmallStandingServer" parent="Servers" node_paths=PackedStringArray("_connection_points") instance=ExtResource("7_oqfnm")]
-position = Vector2(-301, 314)
-_connection_points = []
-
-[node name="SmallStandingServer2" parent="Servers" node_paths=PackedStringArray("_connection_points") instance=ExtResource("7_oqfnm")]
-position = Vector2(66.05, 12.8762)
-_connection_points = []
-
-[node name="SmallStandingServer3" parent="Servers" node_paths=PackedStringArray("_connection_points") instance=ExtResource("7_oqfnm")]
-position = Vector2(128.413, 12.8762)
-_connection_points = []
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -255,21 +276,152 @@ script = ExtResource("10_aextn")
 
 [node name="Stage0" type="Node" parent="StageManager"]
 script = ExtResource("11_ys0vv")
+event_delay_min = 0.0
+event_delay_max = 0.0
+
+[node name="AddServerEvent" type="Node" parent="StageManager/Stage0" node_paths=PackedStringArray("server")]
+script = ExtResource("14_b7acn")
+server = NodePath("../../../HiddenServers/Server1")
+
+[node name="AddServerEvent2" type="Node" parent="StageManager/Stage0" node_paths=PackedStringArray("server")]
+script = ExtResource("14_b7acn")
+server = NodePath("../../../HiddenServers/Server2")
 
 [node name="ServerConnectionEvent" type="Node" parent="StageManager/Stage0"]
 script = ExtResource("12_skse3")
 
-[node name="ServerConnectionEvent2" type="Node" parent="StageManager/Stage0"]
+[node name="Stage1" type="Node" parent="StageManager"]
+script = ExtResource("11_ys0vv")
+event_delay_min = 0.5
+event_delay_max = 1.0
+
+[node name="ServerConnectionEvent" type="Node" parent="StageManager/Stage1"]
 script = ExtResource("12_skse3")
 
-[node name="ServerConnectionEvent3" type="Node" parent="StageManager/Stage0"]
+[node name="AddServerEvent" type="Node" parent="StageManager/Stage1" node_paths=PackedStringArray("server")]
+script = ExtResource("14_b7acn")
+server = NodePath("../../../HiddenServers/SmallLayingServer")
+
+[node name="AddServerEvent2" type="Node" parent="StageManager/Stage1" node_paths=PackedStringArray("server")]
+script = ExtResource("14_b7acn")
+server = NodePath("../../../HiddenServers/SmallLayingServer2")
+
+[node name="AddServerEvent3" type="Node" parent="StageManager/Stage1" node_paths=PackedStringArray("server")]
+script = ExtResource("14_b7acn")
+server = NodePath("../../../HiddenServers/BigServer")
+
+[node name="Stage2" type="Node" parent="StageManager"]
+script = ExtResource("11_ys0vv")
+
+[node name="ServerConnectionEvent2" type="Node" parent="StageManager/Stage2"]
 script = ExtResource("12_skse3")
 
-[node name="ServerConnectionEvent4" type="Node" parent="StageManager/Stage0"]
+[node name="ServerConnectionEvent3" type="Node" parent="StageManager/Stage2"]
 script = ExtResource("12_skse3")
 
-[node name="ServerConnectionEvent5" type="Node" parent="StageManager/Stage0"]
+[node name="ServerConnectionEvent4" type="Node" parent="StageManager/Stage2"]
 script = ExtResource("12_skse3")
+
+[node name="ServerConnectionEvent5" type="Node" parent="StageManager/Stage2"]
+script = ExtResource("12_skse3")
+
+[node name="Stage3" type="Node" parent="StageManager"]
+script = ExtResource("11_ys0vv")
+event_delay_min = 1.0
+
+[node name="ServerConnectionEvent" type="Node" parent="StageManager/Stage3"]
+script = ExtResource("12_skse3")
+
+[node name="ServerConnectionEvent2" type="Node" parent="StageManager/Stage3"]
+script = ExtResource("12_skse3")
+
+[node name="ServerConnectionEvent3" type="Node" parent="StageManager/Stage3"]
+script = ExtResource("12_skse3")
+
+[node name="ServerConnectionEvent4" type="Node" parent="StageManager/Stage3"]
+script = ExtResource("12_skse3")
+
+[node name="ServerConnectionEvent5" type="Node" parent="StageManager/Stage3"]
+script = ExtResource("12_skse3")
+
+[node name="ServerConnectionEvent6" type="Node" parent="StageManager/Stage3"]
+script = ExtResource("12_skse3")
+
+[node name="AddServerEvent" type="Node" parent="StageManager/Stage3" node_paths=PackedStringArray("server")]
+script = ExtResource("14_b7acn")
+server = NodePath("../../../HiddenServers/SmallLayingServer3")
+
+[node name="AddServerEvent2" type="Node" parent="StageManager/Stage3" node_paths=PackedStringArray("server")]
+script = ExtResource("14_b7acn")
+server = NodePath("../../../HiddenServers/Server")
+
+[node name="AddServerEvent3" type="Node" parent="StageManager/Stage3" node_paths=PackedStringArray("server")]
+script = ExtResource("14_b7acn")
+server = NodePath("../../../HiddenServers/SmallLayingServer4")
+
+[node name="AddServerEvent4" type="Node" parent="StageManager/Stage3" node_paths=PackedStringArray("server")]
+script = ExtResource("14_b7acn")
+server = NodePath("../../../HiddenServers/BigServer2")
+
+[node name="Stage4" type="Node" parent="StageManager"]
+script = ExtResource("11_ys0vv")
+event_delay_min = 0.5
+event_delay_max = 2.0
+
+[node name="ServerConnectionEvent" type="Node" parent="StageManager/Stage4"]
+script = ExtResource("12_skse3")
+
+[node name="ServerConnectionEvent2" type="Node" parent="StageManager/Stage4"]
+script = ExtResource("12_skse3")
+
+[node name="ServerConnectionEvent3" type="Node" parent="StageManager/Stage4"]
+script = ExtResource("12_skse3")
+
+[node name="ServerConnectionEvent4" type="Node" parent="StageManager/Stage4"]
+script = ExtResource("12_skse3")
+
+[node name="ServerConnectionEvent5" type="Node" parent="StageManager/Stage4"]
+script = ExtResource("12_skse3")
+
+[node name="ServerConnectionEvent6" type="Node" parent="StageManager/Stage4"]
+script = ExtResource("12_skse3")
+
+[node name="ServerConnectionEvent7" type="Node" parent="StageManager/Stage4"]
+script = ExtResource("12_skse3")
+
+[node name="ServerConnectionEvent8" type="Node" parent="StageManager/Stage4"]
+script = ExtResource("12_skse3")
+
+[node name="ServerConnectionEvent9" type="Node" parent="StageManager/Stage4"]
+script = ExtResource("12_skse3")
+
+[node name="AddServerEvent" type="Node" parent="StageManager/Stage4" node_paths=PackedStringArray("server")]
+script = ExtResource("14_b7acn")
+server = NodePath("../../../HiddenServers/BigServer3")
+
+[node name="AddServerEvent2" type="Node" parent="StageManager/Stage4" node_paths=PackedStringArray("server")]
+script = ExtResource("14_b7acn")
+server = NodePath("../../../HiddenServers/Server3")
+
+[node name="AddServerEvent3" type="Node" parent="StageManager/Stage4" node_paths=PackedStringArray("server")]
+script = ExtResource("14_b7acn")
+server = NodePath("../../../HiddenServers/SmallLayingServer5")
+
+[node name="AddServerEvent4" type="Node" parent="StageManager/Stage4" node_paths=PackedStringArray("server")]
+script = ExtResource("14_b7acn")
+server = NodePath("../../../HiddenServers/BigServer4")
+
+[node name="AddServerEvent5" type="Node" parent="StageManager/Stage4" node_paths=PackedStringArray("server")]
+script = ExtResource("14_b7acn")
+server = NodePath("../../../HiddenServers/Server4")
+
+[node name="AddServerEvent6" type="Node" parent="StageManager/Stage4" node_paths=PackedStringArray("server")]
+script = ExtResource("14_b7acn")
+server = NodePath("../../../HiddenServers/SmallLayingServer6")
+
+[node name="AddServerEvent7" type="Node" parent="StageManager/Stage4" node_paths=PackedStringArray("server")]
+script = ExtResource("14_b7acn")
+server = NodePath("../../../HiddenServers/Server5")
 
 [node name="SubscriptionCounter" type="Node" parent="."]
 script = ExtResource("13_fvjn8")
