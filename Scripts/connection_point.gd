@@ -100,13 +100,6 @@ func interact(other_connection: ConnectionPoint) -> ConnectionState:
 				_add_cable_handle(_other_connection_point.get_rope_path())
 				set_connection_state(ConnectionState.CONNECTED_END)
 				
-				if pair_color != NO_PAIR_COLOR and pair_color == _other_connection_point.pair_color:
-					set_connection_success_state(ConnectionSuccessState.CORRECT_CONNECTION)
-					_other_connection_point.set_connection_success_state(ConnectionSuccessState.CORRECT_CONNECTION)
-				else:
-					set_connection_success_state(ConnectionSuccessState.WRONG_CONNECTION)
-					_other_connection_point.set_connection_success_state(ConnectionSuccessState.WRONG_CONNECTION)
-				
 			# There aren't an other connection, which means this is the connecting
 			else:
 				_add_rope()
@@ -152,13 +145,24 @@ func set_as_broken():
 
 func set_connection_state(new_state: ConnectionState):
 	connection_state = new_state
+	update_connection_success_state()
+
+	update_connection_sprite()
+
+func update_connection_success_state():
 	var _not_paired_states = [ConnectionState.FREE, ConnectionState.HANGING]
-	if connection_state in _not_paired_states:
+	if not _other_connection_point or connection_state in _not_paired_states:
 		if pair_color == NO_PAIR_COLOR:
 			set_connection_success_state(ConnectionSuccessState.IDLE)
 		else:
 			set_connection_success_state(ConnectionSuccessState.WAITING_FOR_CONNECTION)
-	update_connection_sprite()
+	else:
+		if pair_color != NO_PAIR_COLOR and pair_color == _other_connection_point.pair_color:
+			set_connection_success_state(ConnectionSuccessState.CORRECT_CONNECTION)
+			_other_connection_point.set_connection_success_state(ConnectionSuccessState.CORRECT_CONNECTION)
+		else:
+			set_connection_success_state(ConnectionSuccessState.WRONG_CONNECTION)
+			_other_connection_point.set_connection_success_state(ConnectionSuccessState.WRONG_CONNECTION)
 
 func update_connection_sprite():
 	$ConnectionCloseSprite.visible = connection_state != ConnectionState.FREE
