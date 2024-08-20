@@ -251,6 +251,7 @@ theme_override_colors/font_color = Color(0.0627451, 0.227451, 0.207843, 1)
 theme_override_fonts/font = ExtResource("1_n3pxh")
 theme_override_font_sizes/font_size = 111
 text = "12345"
+horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="Control"]
 layout_mode = 1
