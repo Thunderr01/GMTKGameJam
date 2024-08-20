@@ -5,8 +5,8 @@ extends StaticBody2D
 var connected_server: Server
 @export var _connection_points: Array[ConnectionPoint]
 
-const HEAT_ANIMATION_START_TIME_S = 5
-const HEAT_ANIMATION_END_TIME_S = 15
+const HEAT_ANIMATION_START_TIME_S = 10
+const HEAT_ANIMATION_END_TIME_S = 20
 const MAX_SHAKE_AMOUNT = 10
 
 const DEFAULT_SERVER_COLOR = Color.WHITE
