@@ -17,7 +17,7 @@ enum ConnectionSuccessState {
 
 const CABLE = preload("res://Scenes/cable.tscn")
 const SCORE_BADGE = preload("res://Scenes/score_badge.tscn")
-const NO_PAIR_COLOR = Color.BLACK;
+const NO_PAIR_COLOR = Color.TRANSPARENT;
 
 @export var blink_interval = 0.2
 @export var wrong_pair_color = Color.RED
@@ -229,7 +229,8 @@ func is_waiting_for_connection():
 	return connection_success_state == ConnectionSuccessState.WAITING_FOR_CONNECTION
 
 func has_no_pair():
-	return pair_color == NO_PAIR_COLOR
+	print("connection_success_state is " + str(connection_success_state))
+	return connection_success_state == ConnectionSuccessState.IDLE
 
 func _start_creating_score():
 	$ScoreBadgeTimer.start()

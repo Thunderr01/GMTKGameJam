@@ -63,6 +63,16 @@ func get_wrong_connections_amount() -> int:
 		if connection_point.has_wrong_connection():
 			wrong_connections_amount += 1
 	return wrong_connections_amount
+	
+func get_blinking_connections_amount() -> int:
+	var blinking_connections_amount: int = 0
+	for connection_point in _connection_points:
+		if connection_point.is_waiting_for_connection():
+			blinking_connections_amount += 1
+	return blinking_connections_amount
+
+func get_connection_points():
+	return _connection_points
 
 func set_connected_server(server):
 	self.connected_server = server
