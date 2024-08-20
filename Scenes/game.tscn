@@ -1,10 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://dv8jaa2k3xtbu"]
+[gd_scene load_steps=31 format=3 uid="uid://dv8jaa2k3xtbu"]
 
 [ext_resource type="PackedScene" uid="uid://d3culkoy37cgp" path="res://Scenes/player.tscn" id="1_7kpdi"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_god2k"]
 [ext_resource type="PackedScene" uid="uid://xds7xy86xm8a" path="res://Scenes/servers/small_laying_server.tscn" id="2_clrdj"]
+[ext_resource type="Texture2D" uid="uid://c8f641ax27ado" path="res://Art/background.png" id="3_dh51c"]
 [ext_resource type="Script" path="res://Scripts/servers.gd" id="4_op1xf"]
-[ext_resource type="Texture2D" uid="uid://ws1qrvnrinks" path="res://Art/floor_tile.png" id="5_cta8k"]
 [ext_resource type="PackedScene" uid="uid://bua1u10sfetjl" path="res://Scenes/servers/big_server.tscn" id="5_lbq0k"]
 [ext_resource type="AudioStream" uid="uid://dlh0lhjwgay2g" path="res://Audio/Servers base music loop.ogg" id="6_bxts1"]
 [ext_resource type="AudioStream" uid="uid://5gggsjnfvtup" path="res://Audio/Servers extra action music loop.ogg" id="7_ltx5y"]
@@ -15,6 +15,99 @@
 [ext_resource type="Script" path="res://Scripts/Events/server_connection_event.gd" id="12_skse3"]
 [ext_resource type="Script" path="res://Scripts/globals.gd" id="13_fvjn8"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_td48m"]
+atlas = ExtResource("3_dh51c")
+region = Rect2(0, 0, 546, 404)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dap4n"]
+atlas = ExtResource("3_dh51c")
+region = Rect2(546, 0, 546, 404)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hics3"]
+atlas = ExtResource("3_dh51c")
+region = Rect2(1092, 0, 546, 404)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfjsm"]
+atlas = ExtResource("3_dh51c")
+region = Rect2(1638, 0, 546, 404)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekve5"]
+atlas = ExtResource("3_dh51c")
+region = Rect2(2184, 0, 546, 404)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4p64p"]
+atlas = ExtResource("3_dh51c")
+region = Rect2(2730, 0, 546, 404)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tm34h"]
+atlas = ExtResource("3_dh51c")
+region = Rect2(3276, 0, 546, 404)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31uec"]
+atlas = ExtResource("3_dh51c")
+region = Rect2(3822, 0, 546, 404)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ftlqb"]
+atlas = ExtResource("3_dh51c")
+region = Rect2(4368, 0, 546, 404)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h25qs"]
+atlas = ExtResource("3_dh51c")
+region = Rect2(4914, 0, 546, 404)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ng2b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_td48m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dap4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hics3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xfjsm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ekve5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4p64p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tm34h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31uec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ftlqb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h25qs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nl3ks"]
+size = Vector2(70.2, 251)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xw17q"]
+size = Vector2(72.6, 260.8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5pm6h"]
+size = Vector2(555.6, 64.6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oxbct"]
+size = Vector2(496.6, 67.6)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mfock"]
+radius = 13.2136
+
 [node name="game" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_god2k")
@@ -22,6 +115,7 @@ script = ExtResource("1_god2k")
 [node name="CharacterBody2D" parent="." node_paths=PackedStringArray("cables_handler") instance=ExtResource("1_7kpdi")]
 position = Vector2(373, 264)
 scale = Vector2(0.365, 0.365)
+collision_mask = 30
 cables_handler = NodePath("../RopeHandler")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="CharacterBody2D"]
@@ -33,26 +127,97 @@ remote_path = NodePath("../../Camera2D")
 position = Vector2(373, 264)
 scale = Vector2(0.365, 0.365)
 
-[node name="FloorTile" type="TextureRect" parent="."]
-texture_filter = 1
-offset_left = -239.0
-offset_top = -101.0
-offset_right = 6.00002
-offset_bottom = 43.0
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = -100
+z_as_relative = false
+position = Vector2(-6.00002, -101)
 scale = Vector2(5, 5)
-texture = ExtResource("5_cta8k")
-stretch_mode = 1
-metadata/_edit_lock_ = true
+sprite_frames = SubResource("SpriteFrames_8ng2b")
+autoplay = "default"
+frame_progress = 0.0619071
+
+[node name="StaticBody2D" type="StaticBody2D" parent="AnimatedSprite2D"]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/StaticBody2D"]
+position = Vector2(189.8, 76)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_nl3ks")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AnimatedSprite2D/StaticBody2D"]
+position = Vector2(-203.8, 84.2)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_xw17q")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="AnimatedSprite2D/StaticBody2D"]
+position = Vector2(-10.8, 164.6)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_5pm6h")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="AnimatedSprite2D/StaticBody2D"]
+position = Vector2(-9.2, -78.8)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_oxbct")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="AnimatedSprite2D/StaticBody2D"]
+position = Vector2(-144.4, -51)
+shape = SubResource("CircleShape2D_mfock")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="AnimatedSprite2D/StaticBody2D"]
+position = Vector2(110.4, -51.2)
+shape = SubResource("CircleShape2D_mfock")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="AnimatedSprite2D/StaticBody2D"]
+position = Vector2(-92.8, -52.2)
+shape = SubResource("CircleShape2D_mfock")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
+z_index = -100
+z_as_relative = false
+position = Vector2(-544, 1.90735e-06)
+scale = Vector2(1, 1)
+sprite_frames = SubResource("SpriteFrames_8ng2b")
+autoplay = "default"
+frame_progress = 0.0619071
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
+z_index = -101
+z_as_relative = false
+position = Vector2(144.4, 207)
+scale = Vector2(1, 1)
+sprite_frames = SubResource("SpriteFrames_8ng2b")
+autoplay = "default"
+frame_progress = 0.0619071
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
+z_index = -101
+z_as_relative = false
+position = Vector2(-287.6, 216)
+scale = Vector2(1, 1)
+sprite_frames = SubResource("SpriteFrames_8ng2b")
+autoplay = "default"
+frame_progress = 0.0619071
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
+z_index = -100
+z_as_relative = false
+position = Vector2(511.2, 0)
+sprite_frames = SubResource("SpriteFrames_8ng2b")
+autoplay = "default"
+frame_progress = 0.0619071
 
 [node name="Servers" type="Node2D" parent="."]
 y_sort_enabled = true
 script = ExtResource("4_op1xf")
 
-[node name="Server" parent="Servers" instance=ExtResource("5_lbq0k")]
+[node name="Server" parent="Servers" node_paths=PackedStringArray("_connection_points") instance=ExtResource("5_lbq0k")]
 position = Vector2(99, 165)
+_connection_points = []
 
-[node name="Server2" parent="Servers" instance=ExtResource("5_lbq0k")]
+[node name="Server2" parent="Servers" node_paths=PackedStringArray("_connection_points") instance=ExtResource("5_lbq0k")]
 position = Vector2(228, 165)
+_connection_points = []
 
 [node name="SmallLayingServer" parent="Servers" instance=ExtResource("2_clrdj")]
 position = Vector2(59.554, 418.446)
@@ -66,14 +231,17 @@ position = Vector2(598.464, 318.863)
 [node name="SmallLayingServer4" parent="Servers" instance=ExtResource("2_clrdj")]
 position = Vector2(708.044, 318.863)
 
-[node name="SmallStandingServer" parent="Servers" instance=ExtResource("7_oqfnm")]
+[node name="SmallStandingServer" parent="Servers" node_paths=PackedStringArray("_connection_points") instance=ExtResource("7_oqfnm")]
 position = Vector2(147, 394)
+_connection_points = []
 
-[node name="SmallStandingServer2" parent="Servers" instance=ExtResource("7_oqfnm")]
+[node name="SmallStandingServer2" parent="Servers" node_paths=PackedStringArray("_connection_points") instance=ExtResource("7_oqfnm")]
 position = Vector2(514.05, 92.8762)
+_connection_points = []
 
-[node name="SmallStandingServer3" parent="Servers" instance=ExtResource("7_oqfnm")]
+[node name="SmallStandingServer3" parent="Servers" node_paths=PackedStringArray("_connection_points") instance=ExtResource("7_oqfnm")]
 position = Vector2(576.413, 92.8762)
+_connection_points = []
 
 [node name="Timer" type="Timer" parent="."]
 
