@@ -213,6 +213,12 @@ func unblink():
 
 func is_connected_to(connection: ConnectionPoint):
 	return _other_connection_point == connection
+	
+func has_correct_connection():
+	return connection_success_state == ConnectionSuccessState.CORRECT_CONNECTION
+
+func has_wrong_connection():
+	return connection_success_state == ConnectionSuccessState.WRONG_CONNECTION
 
 func _start_creating_score():
 	$ScoreBadgeTimer.start()

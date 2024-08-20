@@ -44,8 +44,8 @@ func blink_two_servers():
 	server2.set_blinking_color(server1_color)
 	used_colors.append(server2_color)
 
-	server1.set_is_blinking(true)
-	server2.set_is_blinking(true)
+	#server1.set_is_blinking(true)
+	#server2.set_is_blinking(true)
 
 func get_all_unblinking_servers():
 	var unblinking_servers = []

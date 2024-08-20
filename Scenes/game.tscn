@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://dv8jaa2k3xtbu"]
+[gd_scene load_steps=15 format=3 uid="uid://dv8jaa2k3xtbu"]
 
 [ext_resource type="PackedScene" uid="uid://d3culkoy37cgp" path="res://Scenes/player.tscn" id="1_7kpdi"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_god2k"]
 [ext_resource type="PackedScene" uid="uid://xds7xy86xm8a" path="res://Scenes/servers/small_laying_server.tscn" id="2_clrdj"]
+[ext_resource type="Script" path="res://Scripts/servers.gd" id="4_op1xf"]
 [ext_resource type="Texture2D" uid="uid://ws1qrvnrinks" path="res://Art/floor_tile.png" id="5_cta8k"]
 [ext_resource type="PackedScene" uid="uid://bua1u10sfetjl" path="res://Scenes/servers/big_server.tscn" id="5_lbq0k"]
 [ext_resource type="AudioStream" uid="uid://dlh0lhjwgay2g" path="res://Audio/Servers base music loop.ogg" id="6_bxts1"]
@@ -45,6 +46,7 @@ metadata/_edit_lock_ = true
 
 [node name="Servers" type="Node2D" parent="."]
 y_sort_enabled = true
+script = ExtResource("4_op1xf")
 
 [node name="Server" parent="Servers" instance=ExtResource("5_lbq0k")]
 position = Vector2(99, 165)
@@ -108,11 +110,19 @@ script = ExtResource("12_skse3")
 [node name="SubscriptionCounter" type="Node" parent="."]
 script = ExtResource("13_fvjn8")
 
-[node name="Score" type="TextEdit" parent="SubscriptionCounter"]
+[node name="Score" type="RichTextLabel" parent="SubscriptionCounter"]
 offset_left = -103.181
 offset_top = -52.3842
 offset_right = 29.8189
 offset_bottom = -6.38422
+text = "123
+"
+
+[node name="UsersPerSecond" type="RichTextLabel" parent="SubscriptionCounter"]
+offset_left = -102.0
+offset_top = -26.0
+offset_right = 30.9999
+offset_bottom = 20.0
 text = "123
 "
 
