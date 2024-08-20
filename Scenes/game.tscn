@@ -142,22 +142,18 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/StaticBody2D"]
 position = Vector2(189.8, 76)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_nl3ks")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="AnimatedSprite2D/StaticBody2D"]
 position = Vector2(-203.8, 84.2)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_xw17q")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="AnimatedSprite2D/StaticBody2D"]
 position = Vector2(-10.8, 164.6)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_5pm6h")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="AnimatedSprite2D/StaticBody2D"]
 position = Vector2(-9.2, -78.8)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_oxbct")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="AnimatedSprite2D/StaticBody2D"]
@@ -176,7 +172,6 @@ shape = SubResource("CircleShape2D_mfock")
 z_index = -100
 z_as_relative = false
 position = Vector2(-544, 1.90735e-06)
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_8ng2b")
 autoplay = "default"
 frame_progress = 0.0619071
@@ -185,7 +180,6 @@ frame_progress = 0.0619071
 z_index = -101
 z_as_relative = false
 position = Vector2(144.4, 207)
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_8ng2b")
 autoplay = "default"
 frame_progress = 0.0619071
@@ -194,7 +188,6 @@ frame_progress = 0.0619071
 z_index = -101
 z_as_relative = false
 position = Vector2(-287.6, 216)
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_8ng2b")
 autoplay = "default"
 frame_progress = 0.0619071
