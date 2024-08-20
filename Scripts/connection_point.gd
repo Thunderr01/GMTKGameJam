@@ -10,7 +10,7 @@ enum ConnectionState {
 
 enum ConnectionSuccessState {
 	IDLE,
-	WAITING_TO_CONNECT,
+	WAITING_FOR_CONNECTION,
 	CORRECT_CONNECTION,
 	WRONG_CONNECTION
 }
@@ -157,7 +157,7 @@ func set_connection_state(new_state: ConnectionState):
 		if pair_color == NO_PAIR_COLOR:
 			set_connection_success_state(ConnectionSuccessState.IDLE)
 		else:
-			set_connection_success_state(ConnectionSuccessState.WAITING_TO_CONNECT)
+			set_connection_success_state(ConnectionSuccessState.WAITING_FOR_CONNECTION)
 	update_connection_sprite()
 
 func update_connection_sprite():
@@ -194,6 +194,7 @@ func set_cable_color(new_color: Color):
 
 func blink(color: Color):
 	pair_color = color
+	connection_success_state = ConnectionSuccessState.WAITING_FOR_CONNECTION
 	stop_blink(pair_color)
 	_blink_tween = get_tree().create_tween()
 	_blink_tween.tween_property($Light, "modulate", pair_color, 0.05)
@@ -219,6 +220,9 @@ func has_correct_connection():
 
 func has_wrong_connection():
 	return connection_success_state == ConnectionSuccessState.WRONG_CONNECTION
+
+func is_waiting_for_connection():
+	return connection_success_state == ConnectionSuccessState.WAITING_FOR_CONNECTION
 
 func _start_creating_score():
 	$ScoreBadgeTimer.start()
