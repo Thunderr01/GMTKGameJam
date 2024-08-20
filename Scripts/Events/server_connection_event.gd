@@ -4,7 +4,6 @@ class_name ServerConnectionEvent
 var _connection_point1: ConnectionPoint
 var _connection_point2: ConnectionPoint
 var _running: bool = false
-var _added_increment = false
 var _rng = RandomNumberGenerator.new()
 
 const INCREMENT = 2
@@ -23,23 +22,10 @@ func _pick_connection_point(connection_points):
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
-	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	# event not running -> dont need to check
-	if not _running:
-		return
-	# shit is good, need to give + score
-	if _connection_point1.is_connected_to(_connection_point2):
-		if not _added_increment:
-			get_tree().root.get_child(0).get_node("SubscriptionCounter").add_increment(INCREMENT)
-			_added_increment = true
-		pass
-	elif _added_increment:
-		get_tree().root.get_node("SubscriptionCounter").add_increment(-INCREMENT)
-		_added_increment = false
 	pass
 
 func start_event():

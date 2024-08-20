@@ -7,9 +7,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_murm5"]
 size = Vector2(61.85, 89)
 
-[node name="Server" type="StaticBody2D"]
+[node name="Server" type="StaticBody2D" node_paths=PackedStringArray("connection_points")]
 collision_layer = 2
 script = ExtResource("1_k35di")
+connection_points = [NodePath("ConnectionPoint"), NodePath("ConnectionPoint2")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(10.5546, -9.66592)
