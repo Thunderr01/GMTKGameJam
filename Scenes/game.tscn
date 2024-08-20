@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dv8jaa2k3xtbu"]
+[gd_scene load_steps=32 format=3 uid="uid://dv8jaa2k3xtbu"]
 
 [ext_resource type="PackedScene" uid="uid://d3culkoy37cgp" path="res://Scenes/player.tscn" id="1_7kpdi"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_god2k"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://Scripts/stage.gd" id="11_ys0vv"]
 [ext_resource type="Script" path="res://Scripts/Events/server_connection_event.gd" id="12_skse3"]
 [ext_resource type="Script" path="res://Scripts/globals.gd" id="13_fvjn8"]
+[ext_resource type="PackedScene" uid="uid://f4a3clw3v1qs" path="res://Scenes/end_screen.tscn" id="15_ougsk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_td48m"]
 atlas = ExtResource("3_dh51c")
@@ -113,7 +114,7 @@ y_sort_enabled = true
 script = ExtResource("1_god2k")
 
 [node name="CharacterBody2D" parent="." node_paths=PackedStringArray("cables_handler") instance=ExtResource("1_7kpdi")]
-position = Vector2(373, 264)
+position = Vector2(-49.3164, 151.561)
 scale = Vector2(0.365, 0.365)
 collision_mask = 30
 cables_handler = NodePath("../RopeHandler")
@@ -124,7 +125,7 @@ remote_path = NodePath("../../Camera2D")
 [node name="RopeHandler" type="Node2D" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(373, 264)
+position = Vector2(-49.3164, 151.561)
 scale = Vector2(0.365, 0.365)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -142,12 +143,10 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/StaticBody2D"]
 position = Vector2(189.8, 76)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_nl3ks")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="AnimatedSprite2D/StaticBody2D"]
 position = Vector2(-203.8, 84.2)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_xw17q")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="AnimatedSprite2D/StaticBody2D"]
@@ -176,7 +175,6 @@ shape = SubResource("CircleShape2D_mfock")
 z_index = -100
 z_as_relative = false
 position = Vector2(-544, 1.90735e-06)
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_8ng2b")
 autoplay = "default"
 frame_progress = 0.0619071
@@ -185,7 +183,6 @@ frame_progress = 0.0619071
 z_index = -101
 z_as_relative = false
 position = Vector2(144.4, 207)
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_8ng2b")
 autoplay = "default"
 frame_progress = 0.0619071
@@ -194,7 +191,6 @@ frame_progress = 0.0619071
 z_index = -101
 z_as_relative = false
 position = Vector2(-287.6, 216)
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_8ng2b")
 autoplay = "default"
 frame_progress = 0.0619071
@@ -212,35 +208,35 @@ y_sort_enabled = true
 script = ExtResource("4_op1xf")
 
 [node name="Server" parent="Servers" node_paths=PackedStringArray("_connection_points") instance=ExtResource("5_lbq0k")]
-position = Vector2(99, 165)
+position = Vector2(-349, 85)
 _connection_points = []
 
 [node name="Server2" parent="Servers" node_paths=PackedStringArray("_connection_points") instance=ExtResource("5_lbq0k")]
-position = Vector2(228, 165)
+position = Vector2(-220, 85)
 _connection_points = []
 
 [node name="SmallLayingServer" parent="Servers" instance=ExtResource("2_clrdj")]
-position = Vector2(59.554, 418.446)
+position = Vector2(-388.446, 338.446)
 
 [node name="SmallLayingServer2" parent="Servers" instance=ExtResource("2_clrdj")]
-position = Vector2(234.375, 418.5)
+position = Vector2(-213.625, 338.5)
 
 [node name="SmallLayingServer3" parent="Servers" instance=ExtResource("2_clrdj")]
-position = Vector2(598.464, 318.863)
+position = Vector2(150.464, 238.863)
 
 [node name="SmallLayingServer4" parent="Servers" instance=ExtResource("2_clrdj")]
-position = Vector2(708.044, 318.863)
+position = Vector2(260.044, 238.863)
 
 [node name="SmallStandingServer" parent="Servers" node_paths=PackedStringArray("_connection_points") instance=ExtResource("7_oqfnm")]
-position = Vector2(147, 394)
+position = Vector2(-301, 314)
 _connection_points = []
 
 [node name="SmallStandingServer2" parent="Servers" node_paths=PackedStringArray("_connection_points") instance=ExtResource("7_oqfnm")]
-position = Vector2(514.05, 92.8762)
+position = Vector2(66.05, 12.8762)
 _connection_points = []
 
 [node name="SmallStandingServer3" parent="Servers" node_paths=PackedStringArray("_connection_points") instance=ExtResource("7_oqfnm")]
-position = Vector2(576.413, 92.8762)
+position = Vector2(128.413, 12.8762)
 _connection_points = []
 
 [node name="Timer" type="Timer" parent="."]
@@ -297,5 +293,8 @@ text = "123
 [node name="Timer" type="Timer" parent="SubscriptionCounter"]
 wait_time = 0.5
 autostart = true
+
+[node name="EndScreen" parent="." instance=ExtResource("15_ougsk")]
+visible = false
 
 [connection signal="timeout" from="SubscriptionCounter/Timer" to="SubscriptionCounter" method="_on_timer_timeout"]

@@ -15,6 +15,11 @@ run/main_scene="res://Scenes/game.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/mode=2
+window/stretch/mode="viewport"
+
 [editor]
 
 version_control/plugin_name="GitPlugin"
