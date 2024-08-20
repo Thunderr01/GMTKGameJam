@@ -1,0 +1,285 @@
+[gd_scene load_steps=30 format=3 uid="uid://f4a3clw3v1qs"]
+
+[ext_resource type="FontFile" uid="uid://66apfm51uyac" path="res://Fonts/dogica/TTF/dogicapixelbold.ttf" id="1_n3pxh"]
+[ext_resource type="Script" path="res://Scripts/end_screen.gd" id="1_terey"]
+[ext_resource type="FontFile" uid="uid://dqx8gpkt317nd" path="res://Fonts/dogica/TTF/dogicapixel.ttf" id="1_uh7i5"]
+[ext_resource type="Texture2D" uid="uid://c8f641ax27ado" path="res://Art/background.png" id="1_ui4km"]
+[ext_resource type="Texture2D" uid="uid://chyalkcf0j60o" path="res://Art/fire_animation.png" id="4_gvrit"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_td48m"]
+atlas = ExtResource("1_ui4km")
+region = Rect2(0, 0, 546, 404)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dap4n"]
+atlas = ExtResource("1_ui4km")
+region = Rect2(546, 0, 546, 404)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hics3"]
+atlas = ExtResource("1_ui4km")
+region = Rect2(1092, 0, 546, 404)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfjsm"]
+atlas = ExtResource("1_ui4km")
+region = Rect2(1638, 0, 546, 404)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekve5"]
+atlas = ExtResource("1_ui4km")
+region = Rect2(2184, 0, 546, 404)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4p64p"]
+atlas = ExtResource("1_ui4km")
+region = Rect2(2730, 0, 546, 404)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tm34h"]
+atlas = ExtResource("1_ui4km")
+region = Rect2(3276, 0, 546, 404)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31uec"]
+atlas = ExtResource("1_ui4km")
+region = Rect2(3822, 0, 546, 404)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ftlqb"]
+atlas = ExtResource("1_ui4km")
+region = Rect2(4368, 0, 546, 404)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h25qs"]
+atlas = ExtResource("1_ui4km")
+region = Rect2(4914, 0, 546, 404)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_60sjm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_td48m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dap4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hics3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xfjsm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ekve5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4p64p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tm34h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31uec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ftlqb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h25qs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rs1b8"]
+content_margin_left = 6.0
+content_margin_top = 14.0
+content_margin_right = 6.0
+content_margin_bottom = 14.0
+bg_color = Color(0.0627451, 0.227451, 0.207843, 0.615686)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dvnna"]
+content_margin_left = 6.0
+content_margin_top = 14.0
+content_margin_right = 6.0
+content_margin_bottom = 14.0
+bg_color = Color(0.0627451, 0.227451, 0.207843, 0.847059)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_em5py"]
+content_margin_left = 6.0
+content_margin_top = 14.0
+content_margin_right = 6.0
+content_margin_bottom = 14.0
+bg_color = Color(0.0627451, 0.227451, 0.207843, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5ahg"]
+atlas = ExtResource("4_gvrit")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ij23k"]
+atlas = ExtResource("4_gvrit")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bt23j"]
+atlas = ExtResource("4_gvrit")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_os2eb"]
+atlas = ExtResource("4_gvrit")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7prn"]
+atlas = ExtResource("4_gvrit")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpf56"]
+atlas = ExtResource("4_gvrit")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sw2ys"]
+atlas = ExtResource("4_gvrit")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfqie"]
+atlas = ExtResource("4_gvrit")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8h0s"]
+atlas = ExtResource("4_gvrit")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tidql"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d5ahg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ij23k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bt23j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_os2eb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k7prn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpf56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sw2ys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfqie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8h0s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="EndScreen" type="CanvasLayer"]
+script = ExtResource("1_terey")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control"]
+z_index = -100
+z_as_relative = false
+position = Vector2(627, -242)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_60sjm")
+autoplay = "default"
+
+[node name="GameOverTitle" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -304.0
+offset_top = 64.0
+offset_right = 304.0
+offset_bottom = 131.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.0619923, 0.22915, 0.206101, 1)
+theme_override_fonts/font = ExtResource("1_n3pxh")
+theme_override_font_sizes/font_size = 76
+text = "Game Over!"
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -230.5
+offset_top = 176.0
+offset_right = 230.5
+offset_bottom = 204.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.0627451, 0.227451, 0.207843, 1)
+theme_override_fonts/font = ExtResource("1_uh7i5")
+theme_override_font_sizes/font_size = 31
+text = "Final Users Amount:"
+
+[node name="UsersAmount" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -277.5
+offset_top = 240.0
+offset_right = 277.5
+offset_bottom = 338.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.0627451, 0.227451, 0.207843, 1)
+theme_override_fonts/font = ExtResource("1_n3pxh")
+theme_override_font_sizes/font_size = 111
+text = "12345"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.5
+offset_top = 424.0
+offset_right = 32.5
+offset_bottom = 455.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_n3pxh")
+theme_override_font_sizes/font_size = 71
+theme_override_styles/hover = SubResource("StyleBoxFlat_rs1b8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dvnna")
+theme_override_styles/normal = SubResource("StyleBoxFlat_em5py")
+text = "Restart"
+
+[node name="FireAnimation" type="AnimatedSprite2D" parent="Control"]
+position = Vector2(160, 414)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_tidql")
+
+[node name="FireAnimation2" type="AnimatedSprite2D" parent="Control"]
+position = Vector2(1009, 414)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_tidql")
+frame_progress = 0.997684
+
+[connection signal="visibility_changed" from="Control/UsersAmount" to="." method="_on_users_amount_visibility_changed"]
+[connection signal="pressed" from="Control/Button" to="." method="_on_restart_button_pressed"]

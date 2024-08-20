@@ -14,6 +14,8 @@ const MAX_HEAT_SERVER_COLOR = Color.RED
 
 var is_on_fire = false
 
+signal fail_game
+
 func _ready() -> void:
 	$FireTimer.timeout.connect(start_fire)
 
@@ -79,4 +81,5 @@ func set_connected_server(server):
 
 func start_fire():
 	is_on_fire = true
-	pass
+	get_tree().root.get_child(0).end_game()
+	fail_game.emit()

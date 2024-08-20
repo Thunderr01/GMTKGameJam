@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dv8jaa2k3xtbu"]
+[gd_scene load_steps=34 format=3 uid="uid://dv8jaa2k3xtbu"]
 
 [ext_resource type="PackedScene" uid="uid://d3culkoy37cgp" path="res://Scenes/player.tscn" id="1_7kpdi"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_god2k"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://Scripts/Events/server_connection_event.gd" id="12_skse3"]
 [ext_resource type="Script" path="res://Scripts/globals.gd" id="13_fvjn8"]
 [ext_resource type="Script" path="res://Scripts/add_server_event.gd" id="14_b7acn"]
+[ext_resource type="PackedScene" uid="uid://f4a3clw3v1qs" path="res://Scenes/end_screen.tscn" id="15_ougsk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_td48m"]
 atlas = ExtResource("3_dh51c")
@@ -428,18 +429,18 @@ server = NodePath("../../../HiddenServers/Server5")
 script = ExtResource("13_fvjn8")
 
 [node name="Score" type="RichTextLabel" parent="SubscriptionCounter"]
-offset_left = -103.181
-offset_top = -52.3842
-offset_right = 29.8189
-offset_bottom = -6.38422
+offset_left = -2529.12
+offset_top = 246.91
+offset_right = -2396.12
+offset_bottom = 292.91
 text = "123
 "
 
 [node name="UsersPerSecond" type="RichTextLabel" parent="SubscriptionCounter"]
-offset_left = -102.0
-offset_top = -26.0
-offset_right = 30.9999
-offset_bottom = 20.0
+offset_left = -2375.89
+offset_top = 417.963
+offset_right = -2242.89
+offset_bottom = 463.963
 text = "123
 "
 
@@ -447,4 +448,9 @@ text = "123
 wait_time = 0.5
 autostart = true
 
+[node name="EndScreen" parent="." instance=ExtResource("15_ougsk")]
+visible = false
+
+[connection signal="fail_game" from="HiddenServers/Server1" to="." method="end_game"]
 [connection signal="timeout" from="SubscriptionCounter/Timer" to="SubscriptionCounter" method="_on_timer_timeout"]
+[connection signal="restart_game" from="EndScreen" to="." method="start_game"]

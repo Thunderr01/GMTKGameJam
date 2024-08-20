@@ -8,6 +8,7 @@ var rng = RandomNumberGenerator.new()
 var time
 var time_of_last_blinking = 0.0
 var time_per_blink = 2.0
+var initial_char_position;
 
 func _ready():
 	timer.wait_time = 9999
@@ -15,6 +16,8 @@ func _ready():
 	$ThemeBase.play()
 	$ThemeEpic.play()
 	$ThemeEpic.volume_db = -100
+	$ServersAMB.play()
+	$ServersAMB.volume_db = -10
 
 func _process(delta: float) -> void:
 	if not $StageManager.is_stage_running() and $Servers.get_blinking_servers_count() == 0:
@@ -78,3 +81,12 @@ func get_random_unused_color():
 		chosen_color = available_colors[rng.randi_range(0, available_colors.size() - 1)]
 
 	return chosen_color
+
+func start_game():
+	get_tree().reload_current_scene()
+	
+func end_game():
+	$EndScreen.usersAmount = $SubscriptionCounter.subs_count
+	$EndScreen.show()
+	$ThemeBase.stop()
+	$ThemeEpic.stop()
