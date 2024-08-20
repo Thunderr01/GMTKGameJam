@@ -427,18 +427,18 @@ server = NodePath("../../../HiddenServers/Server5")
 script = ExtResource("13_fvjn8")
 
 [node name="Score" type="RichTextLabel" parent="SubscriptionCounter"]
-offset_left = -103.181
-offset_top = -52.3842
-offset_right = 29.8189
-offset_bottom = -6.38422
+offset_left = -2529.12
+offset_top = 246.91
+offset_right = -2396.12
+offset_bottom = 292.91
 text = "123
 "
 
 [node name="UsersPerSecond" type="RichTextLabel" parent="SubscriptionCounter"]
-offset_left = -102.0
-offset_top = -26.0
-offset_right = 30.9999
-offset_bottom = 20.0
+offset_left = -2375.89
+offset_top = 417.963
+offset_right = -2242.89
+offset_bottom = 463.963
 text = "123
 "
 
