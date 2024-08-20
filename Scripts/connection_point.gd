@@ -213,7 +213,7 @@ func stop_blink(new_light_color: Color):
 		_blink_tween.kill()
 
 func unblink():
-	pair_color = Color.BLACK
+	pair_color = NO_PAIR_COLOR
 	stop_blink(_light_off_color)
 
 func is_connected_to(connection: ConnectionPoint):
@@ -227,6 +227,9 @@ func has_wrong_connection():
 
 func is_waiting_for_connection():
 	return connection_success_state == ConnectionSuccessState.WAITING_FOR_CONNECTION
+
+func has_no_pair():
+	return pair_color == NO_PAIR_COLOR
 
 func _start_creating_score():
 	$ScoreBadgeTimer.start()
