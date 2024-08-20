@@ -2,6 +2,8 @@ extends CanvasLayer
 
 signal restart_game
 
+var usersAmount = 0
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,3 +19,7 @@ func _process(delta: float) -> void:
 
 func _on_restart_button_pressed() -> void:
 	restart_game.emit()
+
+
+func _on_users_amount_visibility_changed() -> void:
+	$Control/UsersAmount.text = str(usersAmount)

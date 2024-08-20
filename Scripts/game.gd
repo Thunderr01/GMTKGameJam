@@ -86,6 +86,7 @@ func start_game():
 	get_tree().reload_current_scene()
 	
 func end_game():
+	$EndScreen.usersAmount = $SubscriptionCounter.subs_count
 	$EndScreen.show()
 	$ThemeBase.stop()
 	$ThemeEpic.stop()
