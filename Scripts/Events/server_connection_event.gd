@@ -4,7 +4,7 @@ class_name ServerConnectionEvent
 var _connection_point1: ConnectionPoint
 var _connection_point2: ConnectionPoint
 var _running: bool = false
-var _rng = RandomNumberGenerator.new()
+var colors: Array[Color] = [Color.GREEN, Color.BLUE, Color.GREEN_YELLOW, Color.YELLOW, Color.SKY_BLUE, Color.CORNFLOWER_BLUE, Color.DARK_VIOLET, Color.MEDIUM_ORCHID]
 
 const INCREMENT = 2
 
@@ -40,9 +40,8 @@ func start_event():
 	# shit is fucked
 	if _connection_point1 == null or _connection_point2 == null:
 		return
-	
-	var hue = lerp(0.2, 0.8, _rng.randf()) # pick a non-red hue
-	var pair_color = Color.from_hsv(hue, 0.8, 0.8)
+	 
+	var pair_color = colors.pick_random()
 	_connection_point1.blink(pair_color)
 	_connection_point2.blink(pair_color)
 	_running = true	
