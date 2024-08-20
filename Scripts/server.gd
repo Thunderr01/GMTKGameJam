@@ -81,4 +81,5 @@ func set_connected_server(server):
 
 func start_fire():
 	is_on_fire = true
+	get_tree().root.get_child(0).end_game()
 	fail_game.emit()

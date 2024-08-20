@@ -16,7 +16,7 @@
 [ext_resource type="Script" path="res://Scripts/Events/server_connection_event.gd" id="12_skse3"]
 [ext_resource type="Script" path="res://Scripts/globals.gd" id="13_fvjn8"]
 [ext_resource type="Script" path="res://Scripts/add_server_event.gd" id="14_b7acn"]
-[ext_resource type="PackedScene" uid="uid://f4a3clw3v1qs" path="res://Scenes/end_screen.tscn" id="15_ougsk"]
+[ext_resource type="PackedScene" path="res://Scenes/end_screen.tscn" id="15_ougsk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_td48m"]
 atlas = ExtResource("3_dh51c")
