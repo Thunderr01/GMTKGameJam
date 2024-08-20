@@ -10,7 +10,7 @@ enum ConnectionState {
 
 enum ConnectionSuccessState {
 	IDLE,
-	WAITING_TO_CONNECT,
+	WAITING_FOR_CONNECTION,
 	CORRECT_CONNECTION,
 	WRONG_CONNECTION
 }
@@ -100,13 +100,6 @@ func interact(other_connection: ConnectionPoint) -> ConnectionState:
 				_add_cable_handle(_other_connection_point.get_rope_path())
 				set_connection_state(ConnectionState.CONNECTED_END)
 				
-				if pair_color != NO_PAIR_COLOR and pair_color == _other_connection_point.pair_color:
-					set_connection_success_state(ConnectionSuccessState.CORRECT_CONNECTION)
-					_other_connection_point.set_connection_success_state(ConnectionSuccessState.CORRECT_CONNECTION)
-				else:
-					set_connection_success_state(ConnectionSuccessState.WRONG_CONNECTION)
-					_other_connection_point.set_connection_success_state(ConnectionSuccessState.WRONG_CONNECTION)
-				
 			# There aren't an other connection, which means this is the connecting
 			else:
 				_add_rope()
@@ -152,13 +145,24 @@ func set_as_broken():
 
 func set_connection_state(new_state: ConnectionState):
 	connection_state = new_state
+	update_connection_success_state()
+
+	update_connection_sprite()
+
+func update_connection_success_state():
 	var _not_paired_states = [ConnectionState.FREE, ConnectionState.HANGING]
-	if connection_state in _not_paired_states:
+	if not _other_connection_point or connection_state in _not_paired_states:
 		if pair_color == NO_PAIR_COLOR:
 			set_connection_success_state(ConnectionSuccessState.IDLE)
 		else:
-			set_connection_success_state(ConnectionSuccessState.WAITING_TO_CONNECT)
-	update_connection_sprite()
+			set_connection_success_state(ConnectionSuccessState.WAITING_FOR_CONNECTION)
+	else:
+		if pair_color != NO_PAIR_COLOR and pair_color == _other_connection_point.pair_color:
+			set_connection_success_state(ConnectionSuccessState.CORRECT_CONNECTION)
+			_other_connection_point.set_connection_success_state(ConnectionSuccessState.CORRECT_CONNECTION)
+		else:
+			set_connection_success_state(ConnectionSuccessState.WRONG_CONNECTION)
+			_other_connection_point.set_connection_success_state(ConnectionSuccessState.WRONG_CONNECTION)
 
 func update_connection_sprite():
 	$ConnectionCloseSprite.visible = connection_state != ConnectionState.FREE
@@ -194,6 +198,7 @@ func set_cable_color(new_color: Color):
 
 func blink(color: Color):
 	pair_color = color
+	connection_success_state = ConnectionSuccessState.WAITING_FOR_CONNECTION
 	stop_blink(pair_color)
 	_blink_tween = get_tree().create_tween()
 	_blink_tween.tween_property($Light, "modulate", pair_color, 0.05)
@@ -219,6 +224,9 @@ func has_correct_connection():
 
 func has_wrong_connection():
 	return connection_success_state == ConnectionSuccessState.WRONG_CONNECTION
+
+func is_waiting_for_connection():
+	return connection_success_state == ConnectionSuccessState.WAITING_FOR_CONNECTION
 
 func _start_creating_score():
 	$ScoreBadgeTimer.start()

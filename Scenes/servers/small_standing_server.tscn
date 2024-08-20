@@ -7,24 +7,29 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_murm5"]
 size = Vector2(61.85, 89)
 
-[node name="Server" type="StaticBody2D" node_paths=PackedStringArray("connection_points")]
+[node name="Server" type="StaticBody2D" node_paths=PackedStringArray("_connection_points")]
 collision_layer = 2
 script = ExtResource("1_k35di")
-connection_points = [NodePath("ConnectionPoint"), NodePath("ConnectionPoint2")]
+_connection_points = [NodePath("ShakeParent/ConnectionPoint"), NodePath("ShakeParent/ConnectionPoint2")]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="ShakeParent" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="ShakeParent"]
 position = Vector2(10.5546, -9.66592)
 scale = Vector2(7, 7)
 texture = ExtResource("2_pyx86")
+
+[node name="ConnectionPoint" parent="ShakeParent" instance=ExtResource("3_o57xg")]
+position = Vector2(0, -27.2806)
+scale = Vector2(1.78, 1.416)
+
+[node name="ConnectionPoint2" parent="ShakeParent" instance=ExtResource("3_o57xg")]
+position = Vector2(0, 22)
+scale = Vector2(1.76, 1.4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.0750237, -9.5)
 shape = SubResource("RectangleShape2D_murm5")
 
-[node name="ConnectionPoint" parent="." instance=ExtResource("3_o57xg")]
-position = Vector2(0, -27.2806)
-scale = Vector2(1.78, 1.416)
-
-[node name="ConnectionPoint2" parent="." instance=ExtResource("3_o57xg")]
-position = Vector2(0, 22)
-scale = Vector2(1.76, 1.4)
+[node name="FireTimer" type="Timer" parent="."]
+wait_time = 10.0

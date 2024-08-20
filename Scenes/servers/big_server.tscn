@@ -7,32 +7,37 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_murm5"]
 size = Vector2(129, 89)
 
-[node name="BigServer" type="StaticBody2D" node_paths=PackedStringArray("connection_points")]
+[node name="BigServer" type="StaticBody2D" node_paths=PackedStringArray("_connection_points")]
 collision_layer = 2
 script = ExtResource("1_0jr1v")
-connection_points = [NodePath("ConnectionPoint"), NodePath("ConnectionPoint2"), NodePath("ConnectionPoint3"), NodePath("ConnectionPoint4")]
+_connection_points = [NodePath("ShakeParent/ConnectionPoint"), NodePath("ShakeParent/ConnectionPoint2"), NodePath("ShakeParent/ConnectionPoint3"), NodePath("ShakeParent/ConnectionPoint4")]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="ShakeParent" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="ShakeParent"]
 position = Vector2(3.55271e-15, -10)
 scale = Vector2(7, 7)
 texture = ExtResource("2_ts1mt")
+
+[node name="ConnectionPoint" parent="ShakeParent" instance=ExtResource("3_a08gi")]
+position = Vector2(-63, 4)
+scale = Vector2(1.4, 1.4)
+
+[node name="ConnectionPoint2" parent="ShakeParent" instance=ExtResource("3_a08gi")]
+position = Vector2(0, 4)
+scale = Vector2(1.4, 1.4)
+
+[node name="ConnectionPoint3" parent="ShakeParent" instance=ExtResource("3_a08gi")]
+position = Vector2(-63, 53)
+scale = Vector2(1.4, 1.4)
+
+[node name="ConnectionPoint4" parent="ShakeParent" instance=ExtResource("3_a08gi")]
+position = Vector2(0, 53)
+scale = Vector2(1.4, 1.4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-32.5, 15.5)
 shape = SubResource("RectangleShape2D_murm5")
 
-[node name="ConnectionPoint" parent="." instance=ExtResource("3_a08gi")]
-position = Vector2(-63, 4)
-scale = Vector2(1.4, 1.4)
-
-[node name="ConnectionPoint2" parent="." instance=ExtResource("3_a08gi")]
-position = Vector2(0, 4)
-scale = Vector2(1.4, 1.4)
-
-[node name="ConnectionPoint3" parent="." instance=ExtResource("3_a08gi")]
-position = Vector2(-63, 53)
-scale = Vector2(1.4, 1.4)
-
-[node name="ConnectionPoint4" parent="." instance=ExtResource("3_a08gi")]
-position = Vector2(0, 53)
-scale = Vector2(1.4, 1.4)
+[node name="FireTimer" type="Timer" parent="."]
+wait_time = 10.0
