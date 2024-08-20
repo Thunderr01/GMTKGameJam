@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dv8jaa2k3xtbu"]
+[gd_scene load_steps=32 format=3 uid="uid://dv8jaa2k3xtbu"]
 
 [ext_resource type="PackedScene" uid="uid://d3culkoy37cgp" path="res://Scenes/player.tscn" id="1_7kpdi"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_god2k"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://Scripts/stage.gd" id="11_ys0vv"]
 [ext_resource type="Script" path="res://Scripts/Events/server_connection_event.gd" id="12_skse3"]
 [ext_resource type="Script" path="res://Scripts/globals.gd" id="13_fvjn8"]
+[ext_resource type="Texture2D" uid="uid://7kx6sk5jqdlw" path="res://Art/score_screen.png" id="15_kvxya"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_td48m"]
 atlas = ExtResource("3_dh51c")
@@ -135,6 +136,7 @@ scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_8ng2b")
 autoplay = "default"
 frame_progress = 0.0619071
+metadata/_edit_lock_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="AnimatedSprite2D"]
 collision_layer = 16
@@ -297,5 +299,15 @@ text = "123
 [node name="Timer" type="Timer" parent="SubscriptionCounter"]
 wait_time = 0.5
 autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_left = 1364.0
+offset_top = -368.0
+offset_right = 1492.0
+offset_bottom = -240.0
+scale = Vector2(5, 5)
+texture = ExtResource("15_kvxya")
 
 [connection signal="timeout" from="SubscriptionCounter/Timer" to="SubscriptionCounter" method="_on_timer_timeout"]
