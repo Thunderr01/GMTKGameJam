@@ -321,30 +321,10 @@ script = ExtResource("12_skse3")
 [node name="ServerConnectionEvent4" type="Node" parent="StageManager/Stage2"]
 script = ExtResource("12_skse3")
 
-[node name="ServerConnectionEvent5" type="Node" parent="StageManager/Stage2"]
-script = ExtResource("12_skse3")
-
 [node name="Stage3" type="Node" parent="StageManager"]
 script = ExtResource("11_ys0vv")
-event_delay_min = 1.0
-
-[node name="ServerConnectionEvent" type="Node" parent="StageManager/Stage3"]
-script = ExtResource("12_skse3")
-
-[node name="ServerConnectionEvent2" type="Node" parent="StageManager/Stage3"]
-script = ExtResource("12_skse3")
-
-[node name="ServerConnectionEvent3" type="Node" parent="StageManager/Stage3"]
-script = ExtResource("12_skse3")
-
-[node name="ServerConnectionEvent4" type="Node" parent="StageManager/Stage3"]
-script = ExtResource("12_skse3")
-
-[node name="ServerConnectionEvent5" type="Node" parent="StageManager/Stage3"]
-script = ExtResource("12_skse3")
-
-[node name="ServerConnectionEvent6" type="Node" parent="StageManager/Stage3"]
-script = ExtResource("12_skse3")
+event_delay_min = 0.2
+event_delay_max = 0.5
 
 [node name="AddServerEvent" type="Node" parent="StageManager/Stage3" node_paths=PackedStringArray("server")]
 script = ExtResource("14_b7acn")
@@ -354,18 +334,9 @@ server = NodePath("../../../HiddenServers/SmallLayingServer3")
 script = ExtResource("14_b7acn")
 server = NodePath("../../../HiddenServers/Server")
 
-[node name="AddServerEvent3" type="Node" parent="StageManager/Stage3" node_paths=PackedStringArray("server")]
-script = ExtResource("14_b7acn")
-server = NodePath("../../../HiddenServers/SmallLayingServer4")
-
-[node name="AddServerEvent4" type="Node" parent="StageManager/Stage3" node_paths=PackedStringArray("server")]
-script = ExtResource("14_b7acn")
-server = NodePath("../../../HiddenServers/BigServer2")
-
 [node name="Stage4" type="Node" parent="StageManager"]
 script = ExtResource("11_ys0vv")
-event_delay_min = 0.5
-event_delay_max = 2.0
+event_delay_min = 1.0
 
 [node name="ServerConnectionEvent" type="Node" parent="StageManager/Stage4"]
 script = ExtResource("12_skse3")
@@ -385,14 +356,13 @@ script = ExtResource("12_skse3")
 [node name="ServerConnectionEvent6" type="Node" parent="StageManager/Stage4"]
 script = ExtResource("12_skse3")
 
-[node name="ServerConnectionEvent7" type="Node" parent="StageManager/Stage4"]
-script = ExtResource("12_skse3")
+[node name="AddServerEvent3" type="Node" parent="StageManager/Stage4" node_paths=PackedStringArray("server")]
+script = ExtResource("14_b7acn")
+server = NodePath("../../../HiddenServers/SmallLayingServer4")
 
-[node name="ServerConnectionEvent8" type="Node" parent="StageManager/Stage4"]
-script = ExtResource("12_skse3")
-
-[node name="ServerConnectionEvent9" type="Node" parent="StageManager/Stage4"]
-script = ExtResource("12_skse3")
+[node name="AddServerEvent4" type="Node" parent="StageManager/Stage4" node_paths=PackedStringArray("server")]
+script = ExtResource("14_b7acn")
+server = NodePath("../../../HiddenServers/BigServer2")
 
 [node name="AddServerEvent" type="Node" parent="StageManager/Stage4" node_paths=PackedStringArray("server")]
 script = ExtResource("14_b7acn")
@@ -402,23 +372,55 @@ server = NodePath("../../../HiddenServers/BigServer3")
 script = ExtResource("14_b7acn")
 server = NodePath("../../../HiddenServers/Server3")
 
-[node name="AddServerEvent3" type="Node" parent="StageManager/Stage4" node_paths=PackedStringArray("server")]
+[node name="Stage5" type="Node" parent="StageManager"]
+script = ExtResource("11_ys0vv")
+event_delay_min = 0.5
+event_delay_max = 2.0
+
+[node name="ServerConnectionEvent" type="Node" parent="StageManager/Stage5"]
+script = ExtResource("12_skse3")
+
+[node name="ServerConnectionEvent2" type="Node" parent="StageManager/Stage5"]
+script = ExtResource("12_skse3")
+
+[node name="ServerConnectionEvent3" type="Node" parent="StageManager/Stage5"]
+script = ExtResource("12_skse3")
+
+[node name="ServerConnectionEvent4" type="Node" parent="StageManager/Stage5"]
+script = ExtResource("12_skse3")
+
+[node name="ServerConnectionEvent5" type="Node" parent="StageManager/Stage5"]
+script = ExtResource("12_skse3")
+
+[node name="ServerConnectionEvent6" type="Node" parent="StageManager/Stage5"]
+script = ExtResource("12_skse3")
+
+[node name="ServerConnectionEvent7" type="Node" parent="StageManager/Stage5"]
+script = ExtResource("12_skse3")
+
+[node name="ServerConnectionEvent8" type="Node" parent="StageManager/Stage5"]
+script = ExtResource("12_skse3")
+
+[node name="ServerConnectionEvent9" type="Node" parent="StageManager/Stage5"]
+script = ExtResource("12_skse3")
+
+[node name="AddServerEvent3" type="Node" parent="StageManager/Stage5" node_paths=PackedStringArray("server")]
 script = ExtResource("14_b7acn")
 server = NodePath("../../../HiddenServers/SmallLayingServer5")
 
-[node name="AddServerEvent4" type="Node" parent="StageManager/Stage4" node_paths=PackedStringArray("server")]
+[node name="AddServerEvent4" type="Node" parent="StageManager/Stage5" node_paths=PackedStringArray("server")]
 script = ExtResource("14_b7acn")
 server = NodePath("../../../HiddenServers/BigServer4")
 
-[node name="AddServerEvent5" type="Node" parent="StageManager/Stage4" node_paths=PackedStringArray("server")]
+[node name="AddServerEvent5" type="Node" parent="StageManager/Stage5" node_paths=PackedStringArray("server")]
 script = ExtResource("14_b7acn")
 server = NodePath("../../../HiddenServers/Server4")
 
-[node name="AddServerEvent6" type="Node" parent="StageManager/Stage4" node_paths=PackedStringArray("server")]
+[node name="AddServerEvent6" type="Node" parent="StageManager/Stage5" node_paths=PackedStringArray("server")]
 script = ExtResource("14_b7acn")
 server = NodePath("../../../HiddenServers/SmallLayingServer6")
 
-[node name="AddServerEvent7" type="Node" parent="StageManager/Stage4" node_paths=PackedStringArray("server")]
+[node name="AddServerEvent7" type="Node" parent="StageManager/Stage5" node_paths=PackedStringArray("server")]
 script = ExtResource("14_b7acn")
 server = NodePath("../../../HiddenServers/Server5")
 

@@ -7,9 +7,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_murm5"]
 size = Vector2(113, 43.5)
 
-[node name="SmallLayingServer" type="StaticBody2D"]
+[node name="SmallLayingServer" type="StaticBody2D" node_paths=PackedStringArray("_connection_points")]
 collision_layer = 2
 script = ExtResource("1_e1pb1")
+_connection_points = [NodePath("ShakeParent/ConnectionPoint"), NodePath("ShakeParent/ConnectionPoint2")]
 
 [node name="ShakeParent" type="Node2D" parent="."]
 
